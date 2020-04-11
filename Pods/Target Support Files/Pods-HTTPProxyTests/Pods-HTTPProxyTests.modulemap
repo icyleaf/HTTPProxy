@@ -1,0 +1,6 @@
+framework module Pods_HTTPProxyTests {
+  umbrella header "Pods-HTTPProxyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
