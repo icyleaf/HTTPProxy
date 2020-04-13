@@ -15,7 +15,7 @@ class RequestsListPresenter: NSObject {
 
     init(presentingViewController: UIViewController) {
         self.presentingViewController = presentingViewController
-        self.viewController = RequestsListViewController(nibName: "RequestsListViewController", bundle: HTTPProxyPresenter.bundle)
+        self.viewController = RequestsListViewController(nibName: "RequestsListViewController", bundle: HTTPProxyUI.bundle)
         let navigationController = UINavigationController(rootViewController: self.viewController)
         self.navigationController = navigationController
 
@@ -25,9 +25,9 @@ class RequestsListPresenter: NSObject {
 
         let navigationBar = navigationController.navigationBar
         navigationBar.isTranslucent = false
-        navigationBar.tintColor = HTTPProxyPresenter.shared.colorScheme.primaryTextColor
-        navigationBar.barTintColor = HTTPProxyPresenter.shared.colorScheme.foregroundColor
-        navigationBar.titleTextAttributes = [.foregroundColor: HTTPProxyPresenter.shared.colorScheme.primaryTextColor]
+        navigationBar.tintColor = HTTPProxyUI.colorScheme.primaryTextColor
+        navigationBar.barTintColor = HTTPProxyUI.colorScheme.foregroundColor
+        navigationBar.titleTextAttributes = [.foregroundColor: HTTPProxyUI.colorScheme.primaryTextColor]
 
         navigationController.modalPresentationStyle = .fullScreen
         viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))

@@ -22,14 +22,13 @@ enum HTTPResponse {
     }
     
     var responseString: String? {
-        guard let urlResponse = urlResponse, let responseData = responseData else {
+        guard let responseData = responseData else {
             return nil
         }
         if let jsonString = responseData.toJsonString() {
             return jsonString
         }
         
-        //urlResponse.textEncodingName
         return responseData.toString(encoding: .utf8)
     }
 }

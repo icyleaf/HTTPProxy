@@ -51,7 +51,7 @@ class SearchableListViewController: UIViewController {
         
         tableViewBottomLayoutConstraint.constant = tableViewBottonInset
 
-        view.backgroundColor = HTTPProxyPresenter.shared.colorScheme.backgroundColor
+        view.backgroundColor = HTTPProxyUI.colorScheme.backgroundColor
         headersListController = HeadersListController(tableView: tableView)
         headersListController.delegate = self
         headersListController.load(sections: sections)
@@ -62,7 +62,7 @@ class SearchableListViewController: UIViewController {
             button.setTitle(title, for: .normal)
             button.setTitleColor(.white, for: .normal)
             button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
-            button.backgroundColor = HTTPProxyPresenter.shared.colorScheme.selectedColor
+            button.backgroundColor = HTTPProxyUI.colorScheme.selectedColor
             button.layer.masksToBounds = true
             button.layer.cornerRadius = 8.0
         } else {
@@ -191,10 +191,10 @@ class SearchListController: NSObject {
         searchBar.autocapitalizationType = .none
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.placeholder = "Search"
-            searchBar.searchTextField.backgroundColor = HTTPProxyPresenter.shared.colorScheme.foregroundColor
-            searchBar.searchTextField.textColor = HTTPProxyPresenter.shared.colorScheme.primaryTextColor
+            searchBar.searchTextField.backgroundColor = HTTPProxyUI.colorScheme.foregroundColor
+            searchBar.searchTextField.textColor = HTTPProxyUI.colorScheme.primaryTextColor
         } else {
-            let attributes = [NSAttributedString.Key.foregroundColor: HTTPProxyPresenter.shared.colorScheme.primaryTextColor]
+            let attributes = [NSAttributedString.Key.foregroundColor: HTTPProxyUI.colorScheme.primaryTextColor]
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes
         }
     }

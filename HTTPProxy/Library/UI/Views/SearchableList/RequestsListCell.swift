@@ -14,7 +14,7 @@ class RequestsListCell: UITableViewCell {
         backgroundColor = UIColor.clear
         selectionStyle = .none
         
-        containerView.backgroundColor = HTTPProxyPresenter.shared.colorScheme.foregroundColor
+        containerView.backgroundColor = HTTPProxyUI.colorScheme.foregroundColor
         containerView.layer.shadowOpacity = 0.18
         containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
         containerView.layer.shadowRadius = 2
@@ -26,7 +26,7 @@ class RequestsListCell: UITableViewCell {
         
         let boldFont = UIFont(name: "Menlo-Bold", size: 14.0)!
         dateLabel.font = boldFont
-        dateLabel.textColor = HTTPProxyPresenter.shared.colorScheme.secondaryTextColor
+        dateLabel.textColor = HTTPProxyUI.colorScheme.secondaryTextColor
         
         methodLabel.font = boldFont
         methodLabel.layer.masksToBounds = true
@@ -35,7 +35,7 @@ class RequestsListCell: UITableViewCell {
         statusLabel.layer.masksToBounds = true
         statusLabel.layer.cornerRadius = 8.0
         
-        activityView.color = HTTPProxyPresenter.shared.colorScheme.primaryTextColor
+        activityView.color = HTTPProxyUI.colorScheme.primaryTextColor
     }
     
     func configure(with viewModel: SearchableListItem) {
@@ -81,7 +81,7 @@ class RequestsListCell: UITableViewCell {
     private func formattedKey(_ key: String) -> NSAttributedString {
         let attributes = [
             NSAttributedString.Key.font: UIFont.menloBold14,
-            NSAttributedString.Key.foregroundColor: HTTPProxyPresenter.shared.colorScheme.secondaryTextColor
+            NSAttributedString.Key.foregroundColor: HTTPProxyUI.colorScheme.secondaryTextColor
         ]
         return NSAttributedString(string: "\(key)", attributes: attributes)
     }
@@ -92,18 +92,18 @@ class RequestsListCell: UITableViewCell {
         
         let attributes = [
             NSAttributedString.Key.font: UIFont.menlo14,
-            NSAttributedString.Key.foregroundColor: HTTPProxyPresenter.shared.colorScheme.primaryTextColor,
+            NSAttributedString.Key.foregroundColor: HTTPProxyUI.colorScheme.primaryTextColor,
             NSAttributedString.Key.paragraphStyle: paragraphStyle
         ]
         return NSAttributedString(string: "\(value)", attributes: attributes)
     }
     
     private func emphasizeKey(text: String) {
-        emphasizeText(text, label: requestLabel, font: UIFont.menloBold14, color: HTTPProxyPresenter.shared.colorScheme.highlightedTextColor)
+        emphasizeText(text, label: requestLabel, font: UIFont.menloBold14, color: HTTPProxyUI.colorScheme.highlightedTextColor)
     }
     
     private func emphasizeValue(text: String) {
-        emphasizeText(text, label: dateLabel, font: UIFont.menloBold14, color: HTTPProxyPresenter.shared.colorScheme.highlightedTextColor)
+        emphasizeText(text, label: dateLabel, font: UIFont.menloBold14, color: HTTPProxyUI.colorScheme.highlightedTextColor)
     }
     
     private func emphasizeText(_ text: String, label: UILabel, font: UIFont, color: UIColor) {

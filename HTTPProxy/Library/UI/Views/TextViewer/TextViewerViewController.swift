@@ -13,7 +13,7 @@ class TextViewerViewController: UIViewController {
     init(text: String, filename: String) {
         self.text = text
         self.filename = filename
-        super.init(nibName: String(describing: TextViewerViewController.self), bundle: HTTPProxyPresenter.bundle)
+        super.init(nibName: String(describing: TextViewerViewController.self), bundle: HTTPProxyUI.bundle)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,8 +23,8 @@ class TextViewerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = filename
-        toolbar.tintColor = HTTPProxyPresenter.shared.colorScheme.primaryTextColor
-        toolbar.barTintColor = HTTPProxyPresenter.shared.colorScheme.foregroundColor
+        toolbar.tintColor = HTTPProxyUI.colorScheme.primaryTextColor
+        toolbar.barTintColor = HTTPProxyUI.colorScheme.foregroundColor
         stepper.minimumValue = 8
         stepper.maximumValue = 20
         stepper.value = 12
@@ -38,7 +38,7 @@ class TextViewerViewController: UIViewController {
         if #available(iOS 13.0, *) {
             activityIndicator.style = .large
         }
-        activityIndicator.color = HTTPProxyPresenter.shared.colorScheme.primaryTextColor
+        activityIndicator.color = HTTPProxyUI.colorScheme.primaryTextColor
         textView.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         
@@ -53,7 +53,7 @@ class TextViewerViewController: UIViewController {
     
     private func highlightedText(_ text: String, completionHandler: @escaping (NSAttributedString?) -> Void) {
         if let highlightr = Highlightr() {
-            let theme = HTTPProxyPresenter.darkModeEnabled() ? "atom-one-dark" : "atom-one-light"
+            let theme = HTTPProxyUI.darkModeEnabled() ? "atom-one-dark" : "atom-one-light"
             highlightr.setTheme(to: theme)
             DispatchQueue.global().asyncAfter(deadline: .now() + 0.1, execute: {
                 let highlightedText = highlightr.highlight(text)

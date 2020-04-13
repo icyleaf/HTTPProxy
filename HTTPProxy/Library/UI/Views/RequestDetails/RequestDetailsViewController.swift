@@ -12,7 +12,7 @@ class RequestDetailsViewController: UIViewController {
     @IBOutlet private var segmentedControl: SegmentedControl! {
         didSet {
             let titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: HTTPProxyPresenter.shared.colorScheme.primaryTextColor
+                NSAttributedString.Key.foregroundColor: HTTPProxyUI.colorScheme.primaryTextColor
             ]
 
             segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
@@ -26,9 +26,9 @@ class RequestDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = HTTPProxyPresenter.shared.colorScheme.backgroundColor
-        segmentedView.backgroundColor = HTTPProxyPresenter.shared.colorScheme.foregroundColor
-        indicatorView.backgroundColor = HTTPProxyPresenter.shared.colorScheme.selectedColor
+        view.backgroundColor = HTTPProxyUI.colorScheme.backgroundColor
+        segmentedView.backgroundColor = HTTPProxyUI.colorScheme.foregroundColor
+        indicatorView.backgroundColor = HTTPProxyUI.colorScheme.selectedColor
 
         updateChildViewController(0)
         updateIndicatorFrame()

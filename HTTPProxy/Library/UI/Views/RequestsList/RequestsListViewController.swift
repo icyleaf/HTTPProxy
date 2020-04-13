@@ -13,7 +13,7 @@ protocol RequestsListViewOutput {
 
 class RequestsListViewController: UIViewController, RequestsListViewInput, RequestDetailsDelegate {
     @IBOutlet private var contentView: UIView!
-    private lazy var contentVC = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyPresenter.bundle)
+    private lazy var contentVC = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyUI.bundle)
 
     @IBOutlet private var newRequestNotification: UILabel!
 
@@ -26,7 +26,7 @@ class RequestsListViewController: UIViewController, RequestsListViewInput, Reque
         super.viewDidLoad()
 
         title = "HTTP Monitoring"
-        view.backgroundColor = HTTPProxyPresenter.shared.colorScheme.backgroundColor
+        view.backgroundColor = HTTPProxyUI.colorScheme.backgroundColor
         
         contentVC.delegate = self
         addChild(contentVC)

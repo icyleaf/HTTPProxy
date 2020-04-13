@@ -26,7 +26,7 @@ class RequestDetailsPresenter {
     init(request: HTTPRequest, presentingViewController: UINavigationController) {
         self.request = request
         self.presentingViewController = presentingViewController
-        self.viewController = RequestDetailsViewController(nibName: "RequestDetailsViewController", bundle: HTTPProxyPresenter.bundle)
+        self.viewController = RequestDetailsViewController(nibName: "RequestDetailsViewController", bundle: HTTPProxyUI.bundle)
         self.viewController.delegate = self
         let title = request.request.url?.host ?? "Request Details"
         self.viewController.title = title
@@ -59,7 +59,7 @@ extension RequestDetailsPresenter: RequestDetailsViewControllerDelegate {
 private struct Summary {
     
     func requestController(httpRequest: HTTPRequest) -> SearchableListViewController {
-        let viewController = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyPresenter.bundle)
+        let viewController = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyUI.bundle)
         viewController.sections = sectionData(httpRequest: httpRequest) ?? []
         return viewController
     }
@@ -122,7 +122,7 @@ private struct Request {
     }
     
     func requestController(httpRequest: HTTPRequest) -> SearchableListViewController {
-        let viewController = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyPresenter.bundle)
+        let viewController = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyUI.bundle)
         
         var requestFields: [RequestFields] = []
         if let allHTTPHeaderFields = httpRequest.request.allHTTPHeaderFields {
@@ -169,7 +169,7 @@ private struct Response {
     }
     
     func requestController(httpRequest: HTTPRequest) -> SearchableListViewController {
-        let viewController = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyPresenter.bundle)
+        let viewController = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyUI.bundle)
         let headers = sortedHeaders(httpRequest: httpRequest) ?? []
         let paramsSection = SearchableListSection(title: "Response Headers", items: headers)
         viewController.sections = [paramsSection]

@@ -4,12 +4,6 @@ class HTTPProxyPresenter {
 
     private var requestsListPresenter: RequestsListPresenter?
     static let shared = HTTPProxyPresenter()
-    static let bundle = Bundle(for: HTTPProxy.self)
-    var colorScheme: ColorScheme
-
-    init() {
-        colorScheme = HTTPProxyPresenter.darkModeEnabled() ? DarkColorScheme() : LightColorScheme()
-    }
     
     func handleShakeGesture() {
         presentViewController()
@@ -34,13 +28,6 @@ class HTTPProxyPresenter {
             presentingViewController = presentedViewController
         }
         return presentingViewController
-    }
-    
-    static func darkModeEnabled() -> Bool {
-        if #available(iOS 13.0, *) {
-            return UITraitCollection.current.userInterfaceStyle == .dark
-        }
-        return false
     }
 }
 

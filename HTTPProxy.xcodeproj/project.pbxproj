@@ -17,6 +17,7 @@
 		806E1AD02427948F005D7E24 /* HTTPProxyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E1ACF2427948F005D7E24 /* HTTPProxyUITests.swift */; };
 		809F5D132440717C00E27F17 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809F5D122440717C00E27F17 /* ColorScheme.swift */; };
 		80BF81F9243F5B60001D54ED /* HeadersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF81F8243F5B60001D54ED /* HeadersListController.swift */; };
+		80D7D9D9244473CD00D115C1 /* HTTPProxyUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D7D9D8244473CD00D115C1 /* HTTPProxyUI.swift */; };
 		80EF1E87242798140016D0A2 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF1E5B242798140016D0A2 /* Data.swift */; };
 		80EF1E88242798140016D0A2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF1E5C242798140016D0A2 /* UIColor.swift */; };
 		80EF1E89242798140016D0A2 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF1E5D242798140016D0A2 /* SegmentedControl.swift */; };
@@ -97,6 +98,7 @@
 		806E1AD12427948F005D7E24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		809F5D122440717C00E27F17 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		80BF81F8243F5B60001D54ED /* HeadersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadersListController.swift; sourceTree = "<group>"; };
+		80D7D9D8244473CD00D115C1 /* HTTPProxyUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProxyUI.swift; sourceTree = "<group>"; };
 		80EF1E5B242798140016D0A2 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		80EF1E5C242798140016D0A2 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		80EF1E5D242798140016D0A2 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
@@ -237,8 +239,8 @@
 		80EF1E58242798140016D0A2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				80EF1E59242798140016D0A2 /* UI */,
 				80EF1E7E242798140016D0A2 /* Core */,
+				80EF1E59242798140016D0A2 /* UI */,
 			);
 			name = Library;
 			path = HTTPProxy/Library;
@@ -247,10 +249,11 @@
 		80EF1E59242798140016D0A2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				80EF1E7C242798140016D0A2 /* HTTPProxyPresenter.swift */,
-				80EF1E63242798140016D0A2 /* Views */,
-				80EF1E5A242798140016D0A2 /* Extensions */,
 				809F5D122440717C00E27F17 /* ColorScheme.swift */,
+				80EF1E7C242798140016D0A2 /* HTTPProxyPresenter.swift */,
+				80D7D9D8244473CD00D115C1 /* HTTPProxyUI.swift */,
+				80EF1E5A242798140016D0A2 /* Extensions */,
+				80EF1E63242798140016D0A2 /* Views */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				80EF1E94242798140016D0A2 /* RequestDetailsPresenter.swift in Sources */,
 				80EF1E8B242798140016D0A2 /* String.swift in Sources */,
 				80EF1EA8242798140016D0A2 /* HTTPProxyRequestInterceptorDelegate.swift in Sources */,
+				80D7D9D9244473CD00D115C1 /* HTTPProxyUI.swift in Sources */,
 				80EF1E89242798140016D0A2 /* SegmentedControl.swift in Sources */,
 				80EF1EAD242798140016D0A2 /* HTTPProxyURLProtocol.swift in Sources */,
 				806E1AB02427948D005D7E24 /* AppDelegate.swift in Sources */,

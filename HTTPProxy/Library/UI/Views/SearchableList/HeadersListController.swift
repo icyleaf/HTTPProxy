@@ -18,11 +18,11 @@ class HeadersListController: NSObject {
         self.tableView = tableView
         super.init()
 
-        let nib = UINib(nibName: "RequestsListCell", bundle: HTTPProxyPresenter.bundle)
+        let nib = UINib(nibName: "RequestsListCell", bundle: HTTPProxyUI.bundle)
         tableView.register(nib, forCellReuseIdentifier: HeadersListController.cellIdentifier)
 
         UITableViewHeaderFooterView.appearance().tintColor = .clear
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = HTTPProxyPresenter.shared.colorScheme.primaryTextColor
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = HTTPProxyUI.colorScheme.primaryTextColor
     }
     
     func load(sections: [SearchableListSection]) {
