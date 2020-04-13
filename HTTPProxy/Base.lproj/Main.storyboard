@@ -17,24 +17,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lNE-eP-0Fc">
-                                <rect key="frame" x="82" y="317" width="250" height="272.5"/>
+                                <rect key="frame" x="82" y="291.5" width="250" height="323.5"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F30-Mf-eK6">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proxy enabled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNJ-LY-vcy">
+                                                <rect key="frame" x="0.0" y="0.0" width="201" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVs-3M-JEn">
+                                                <rect key="frame" x="201" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="proxyEnabledSwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VK3-UJ-Ace"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL9-ch-RKg">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="51" width="250" height="30"/>
                                         <state key="normal" title="Show Monitor"/>
                                         <connections>
                                             <action selector="showMonitor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k8b-cW-FLn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRy-zt-d8G">
-                                        <rect key="frame" x="0.0" y="50" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="101" width="250" height="30"/>
                                         <state key="normal" title="Send requests"/>
                                         <connections>
                                             <action selector="sendRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SF1-LZ-zCV"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tx5-O4-VFV">
-                                        <rect key="frame" x="0.0" y="100" width="250" height="31"/>
+                                        <rect key="frame" x="0.0" y="151" width="250" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send periodically" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVi-y1-dPM">
                                                 <rect key="frame" x="0.0" y="0.0" width="201" height="31"/>
@@ -45,13 +62,13 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Lu-IO-vCz">
                                                 <rect key="frame" x="201" y="0.0" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="I7A-Lq-hdv"/>
+                                                    <action selector="sendPeriodicallyWwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="u6z-WJ-Xff"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-jv-kni">
-                                        <rect key="frame" x="0.0" y="151" width="250" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="202" width="250" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval (in seconds)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mx6-aD-IgC">
                                                 <rect key="frame" x="0.0" y="0.0" width="155.5" height="20.5"/>
@@ -68,13 +85,13 @@
                                         </subviews>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="M3J-AF-Lkl">
-                                        <rect key="frame" x="-2" y="191.5" width="254" height="31"/>
+                                        <rect key="frame" x="-2" y="242.5" width="254" height="31"/>
                                         <connections>
                                             <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="yxV-Li-gUG"/>
                                         </connections>
                                     </slider>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFv-0S-i8Q">
-                                        <rect key="frame" x="0.0" y="241.5" width="250" height="31"/>
+                                        <rect key="frame" x="0.0" y="292.5" width="250" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ns-u4-ORA">
                                                 <rect key="frame" x="0.0" y="0.0" width="201" height="31"/>

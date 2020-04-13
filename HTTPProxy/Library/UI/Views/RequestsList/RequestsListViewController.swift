@@ -25,7 +25,7 @@ class RequestsListViewController: UIViewController, RequestsListViewInput, Reque
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "HTTP Monitoring"
+        title = "iOS HTTP Proxy"
         view.backgroundColor = HTTPProxyUI.colorScheme.backgroundColor
         
         contentVC.delegate = self
