@@ -15,7 +15,7 @@ class HTTPProxyURLProtocol: URLProtocol {
             return false
         }
 
-        return HTTPProxyRequestInterceptor.shared.shouldFireRequest(request)
+        return HTTPProxyRequestInterceptor.shared.shouldInterceptRequest(request)
     }
 
     override class func canInit(with task: URLSessionTask) -> Bool {

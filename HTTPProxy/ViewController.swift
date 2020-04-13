@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func darkModeSwitchChanged(_ sender: UISwitch) {
-        HTTPProxyPresenter.shared.colorScheme = sender.isOn ? DarkColorScheme() : LightColorScheme()
+        HTTPProxyUI.colorScheme = sender.isOn ? DarkColorScheme() : LightColorScheme()
     }
     
     func darkModeEnabled() -> Bool {

@@ -1,6 +1,6 @@
 import Foundation
 
-enum HTTPResponse {
+public enum HTTPResponse {
     case success(response: HTTPURLResponse, data: Data?)
     case failure(response: HTTPURLResponse?, error: Error?)
     

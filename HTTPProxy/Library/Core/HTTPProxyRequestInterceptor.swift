@@ -23,7 +23,7 @@ class HTTPProxyRequestInterceptor {
         swizzleProtocolClasses()
     }
 
-    func shouldFireRequest(_ urlRequest: URLRequest) -> Bool {
+    func shouldInterceptRequest(_ urlRequest: URLRequest) -> Bool {
         return delegate?.shouldFireRequest(urlRequest: urlRequest) ?? false
     }
 

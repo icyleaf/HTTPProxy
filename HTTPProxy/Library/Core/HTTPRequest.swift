@@ -1,12 +1,12 @@
 import Foundation
 
-class HTTPRequest {
+public class HTTPRequest {
 
-    let request: URLRequest!
-    let requestDate: Date!
-    var response: HTTPResponse?
-    var responseDate: Date?
-    var requestBodyData: Data? {
+    public let request: URLRequest
+    public let requestDate: Date
+    public var response: HTTPResponse?
+    public var responseDate: Date?
+    public var requestBodyData: Data? {
         if let httpBody = request.httpBody {
             return httpBody
         }
@@ -16,7 +16,7 @@ class HTTPRequest {
         return nil
     }
 
-    var requestBodyString: String? {
+    public var requestBodyString: String? {
         
         guard let bodyData = requestBodyData else {
             return nil

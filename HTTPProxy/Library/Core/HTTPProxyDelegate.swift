@@ -1,18 +1,8 @@
 import Foundation
 
-protocol HTTPProxyDelegate: AnyObject {
+public protocol HTTPProxyDelegate: AnyObject {
 
-    func shouldFireRequest(urlRequest: URLRequest) -> Bool
-    func didFireRequest(request: HTTPRequest)
-    func didCompleteRequest(request: HTTPRequest)
-}
-
-extension HTTPProxyDelegate {
-    func shouldFireRequest(urlRequest: URLRequest) -> Bool {
-        return true
-    }
-    
-    func didCompleteRequest(request: HTTPRequest) {
-        
-    }
+    func shouldFireURLRequest(_ urlRequest: URLRequest) -> Bool
+    func willFireRequest(_ httpRequest: HTTPRequest)
+    func didCompleteRequest(_ httpRequest: HTTPRequest)
 }

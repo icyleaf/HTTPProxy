@@ -3,11 +3,12 @@ import Foundation
 public class HTTPProxy {
 
     public static let shared = HTTPProxy()
+    public weak var delegate: HTTPProxyDelegate?
 
     private let queue = DispatchQueue(label: "HTTPProxy")
     var requests = [HTTPRequest]()
     var enabled = false
-    weak var delegate: HTTPProxyDelegate?
+    weak var internalDelegate: HTTPProxyDelegate?
 
     public func enable() {
         guard !enabled else { return }
@@ -43,14 +44,15 @@ public class HTTPProxy {
 extension HTTPProxy: HTTPProxyRequestInterceptorDelegate {
 
     func shouldFireRequest(urlRequest: URLRequest) -> Bool {
-        return delegate?.shouldFireRequest(urlRequest: urlRequest) ?? true
+        return delegate?.shouldFireURLRequest(urlRequest) ?? true
     }
 
     func willFireRequest(urlRequest: URLRequest) {
         queue.sync {
             let request = HTTPRequest(request: urlRequest)
             requests.insert(request, at: 0)
-            delegate?.didFireRequest(request: request)
+            internalDelegate?.willFireRequest(request)
+            delegate?.willFireRequest(request)
         }
     }
 
@@ -59,7 +61,8 @@ extension HTTPProxy: HTTPProxyRequestInterceptorDelegate {
             if let httpRequest = requestFor(urlRequest: urlRequest) {
                 httpRequest.responseDate = Date()
                 httpRequest.response = HTTPResponse.success(response: response, data: data)
-                delegate?.didCompleteRequest(request: httpRequest)
+                internalDelegate?.didCompleteRequest(httpRequest)
+                delegate?.didCompleteRequest(httpRequest)
             }
         }
     }
@@ -69,6 +72,8 @@ extension HTTPProxy: HTTPProxyRequestInterceptorDelegate {
             if let httpRequest = requestFor(urlRequest: urlRequest) {
                 httpRequest.response = HTTPResponse.failure(response: response, error: error)
                 httpRequest.responseDate = Date()
+                internalDelegate?.didCompleteRequest(httpRequest)
+                delegate?.didCompleteRequest(httpRequest)
             }
         }
     }

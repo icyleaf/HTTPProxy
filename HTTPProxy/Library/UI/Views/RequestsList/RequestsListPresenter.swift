@@ -33,7 +33,7 @@ class RequestsListPresenter: NSObject {
         viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
         viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clear))
 
-        HTTPProxy.shared.delegate = self
+        HTTPProxy.shared.internalDelegate = self
     }
     
     func present() {
@@ -53,12 +53,16 @@ class RequestsListPresenter: NSObject {
 }
 
 extension RequestsListPresenter: HTTPProxyDelegate {
+
+    func shouldFireURLRequest(_ urlRequest: URLRequest) -> Bool {
+        return true
+    }
     
-    func didFireRequest(request: HTTPRequest) {
+    func willFireRequest(_ httpRequest: HTTPRequest) {
         viewController.loadRequests(requests: HTTPProxy.shared.requests)
     }
     
-    func didCompleteRequest(request: HTTPRequest) {
+    func didCompleteRequest(_ httpRequest: HTTPRequest) {
         viewController.loadRequests(requests: HTTPProxy.shared.requests)
     }
 }
