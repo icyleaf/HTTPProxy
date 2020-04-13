@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,10 +85,10 @@
             <connections>
                 <outlet property="activityView" destination="bfj-5K-8Cd" id="pnK-n2-KN7"/>
                 <outlet property="containerView" destination="3fJ-bt-qW5" id="nxS-ga-AUh"/>
-                <outlet property="dateLabel" destination="lAV-EI-dyk" id="5hp-aa-xXS"/>
+                <outlet property="contentLabel" destination="AcP-F0-mdW" id="OJr-9N-QHD"/>
                 <outlet property="methodLabel" destination="qZl-cD-rzn" id="KeR-Qc-2vU"/>
-                <outlet property="requestLabel" destination="AcP-F0-mdW" id="OJr-9N-QHD"/>
                 <outlet property="statusLabel" destination="50M-es-cf9" id="X8H-XV-lqB"/>
+                <outlet property="titleLabel" destination="lAV-EI-dyk" id="5hp-aa-xXS"/>
             </connections>
             <point key="canvasLocation" x="76.5" y="18"/>
         </view>

@@ -1,13 +1,14 @@
 import UIKit
 
 class RequestsListCell: UITableViewCell {
+    
     @IBOutlet private var containerView: UIView!
-    @IBOutlet public var dateLabel: UILabel!
+    @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var methodLabel: UILabel!
     @IBOutlet private var statusLabel: UILabel!
-    @IBOutlet public var requestLabel: UILabel!
-    @IBOutlet public var activityView: UIActivityIndicatorView!
-
+    @IBOutlet private var contentLabel: UILabel!
+    @IBOutlet private var activityView: UIActivityIndicatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -25,8 +26,8 @@ class RequestsListCell: UITableViewCell {
         containerView.layer.masksToBounds = false
         
         let boldFont = UIFont(name: "Menlo-Bold", size: 14.0)!
-        dateLabel.font = boldFont
-        dateLabel.textColor = HTTPProxyUI.colorScheme.secondaryTextColor
+        titleLabel.font = boldFont
+        titleLabel.textColor = HTTPProxyUI.colorScheme.secondaryTextColor
         
         methodLabel.font = boldFont
         methodLabel.layer.masksToBounds = true
@@ -39,8 +40,8 @@ class RequestsListCell: UITableViewCell {
     }
     
     func configure(with viewModel: SearchableListItem) {
-        dateLabel.attributedText = formattedKey(viewModel.key)
-        requestLabel.attributedText = formattedValue(viewModel.value)
+        titleLabel.attributedText = formattedKey(viewModel.key)
+        contentLabel.attributedText = formattedValue(viewModel.value)
         
         if let method = viewModel.method {
             methodLabel.text = method
@@ -99,11 +100,11 @@ class RequestsListCell: UITableViewCell {
     }
     
     private func emphasizeKey(text: String) {
-        emphasizeText(text, label: requestLabel, font: UIFont.menloBold14, color: HTTPProxyUI.colorScheme.highlightedTextColor)
+        emphasizeText(text, label: contentLabel, font: UIFont.menloBold14, color: HTTPProxyUI.colorScheme.highlightedTextColor)
     }
     
     private func emphasizeValue(text: String) {
-        emphasizeText(text, label: dateLabel, font: UIFont.menloBold14, color: HTTPProxyUI.colorScheme.highlightedTextColor)
+        emphasizeText(text, label: titleLabel, font: UIFont.menloBold14, color: HTTPProxyUI.colorScheme.highlightedTextColor)
     }
     
     private func emphasizeText(_ text: String, label: UILabel, font: UIFont, color: UIColor) {

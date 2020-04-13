@@ -201,11 +201,8 @@ private struct Response {
     }
     
     private func canShowResponse(httpRequest: HTTPRequest) -> Bool {
-        return responseData(httpRequest: httpRequest) != nil
-    }
-    
-    private func responseData(httpRequest: HTTPRequest) -> Data? {
-        httpRequest.response?.responseData
+        let isEmpty = httpRequest.response?.responseString?.isEmpty ?? true
+        return !isEmpty
     }
     
     private func suggestedFilename(httpRequest: HTTPRequest) -> String? {
@@ -216,23 +213,9 @@ private struct Response {
     }
     
     private func showResponse(httpRequest: HTTPRequest) {
-        guard let data = responseData(httpRequest: httpRequest) as Data? else {
-            return
-        }
-        
-        let filename = suggestedFilename(httpRequest: httpRequest) ?? ""
-        if let jsonString = data.toJsonString() {
-            viewFile(content: jsonString, filename: filename)
-            return
-        }
-        
-        if let content = data.toString(encoding: .utf8) {
-            viewFile(content: content, filename: filename)
-            return
-        }
-        
-        if let response = httpRequest.response?.responseString {
-            viewFile(content: response, filename: filename)
+        if let responseString = httpRequest.response?.responseString {
+            let filename = suggestedFilename(httpRequest: httpRequest) ?? ""
+            viewFile(content: responseString, filename: filename)
         }
     }
     

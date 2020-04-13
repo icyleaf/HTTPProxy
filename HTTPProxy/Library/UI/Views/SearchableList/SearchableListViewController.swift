@@ -151,6 +151,8 @@ extension SearchableListViewController: HeadersListControllerDelegate {
             }
             if let selectedIndex = selectedIndex {
                 delegate?.didSelectItem(at: selectedIndex)
+            } else {
+                fatalError()
             }
         } else {
             delegate?.didSelectItem(at: index)

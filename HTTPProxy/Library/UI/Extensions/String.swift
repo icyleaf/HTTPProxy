@@ -1,6 +1,7 @@
 import Foundation
 
 extension String {
+
     func ranges(of searchString: String) -> [Range<String.Index>]? {
         let count = searchString.count
         guard let indices = indices(of: searchString) else {
