@@ -2,23 +2,27 @@ PODS:
   - Highlightr (2.1.0)
   - Nimble (8.0.5)
   - Quick (2.2.0)
+  - SwiftLint (0.39.2)
 
 DEPENDENCIES:
   - Highlightr
   - Nimble
   - Quick
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Highlightr
     - Nimble
     - Quick
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
-PODFILE CHECKSUM: ca82ddcb410edb0b3a816e10aef3eb35f0cdb4d1
+PODFILE CHECKSUM: b4dd4f7c63b36d6dd52ca48c764ce7dba84ff9af
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
