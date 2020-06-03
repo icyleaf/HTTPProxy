@@ -33,6 +33,16 @@ class RequestsListPresenter: NSObject {
         viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
         viewController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clear))
 
+        var filters: [HTTPProxyFilter] = []
+        let filter = HTTPProxyFilter(name: "jsonplaceholder")
+        filter.host = "jsonplaceholder.typicode.com"
+        filters.append(filter)
+        
+        let filter2 = HTTPProxyFilter(name: "Postman")
+        filter2.host = "postman-echo.com"
+        filters.append(filter2)
+        viewController.filters = filters
+        
         HTTPProxy.shared.internalDelegate = self
     }
     

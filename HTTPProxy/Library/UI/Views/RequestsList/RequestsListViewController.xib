@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RequestsListViewController" customModule="HTTPProxy" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="et6-x9-iM1" id="jAr-DI-64f"/>
+                <outlet property="filterView" destination="6EO-qv-Jp2" id="gPe-bK-YUw"/>
                 <outlet property="view" destination="vac-3C-DB4" id="ZH5-nY-erx"/>
             </connections>
         </placeholder>
@@ -19,17 +20,27 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EO-qv-Jp2">
+                    <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="Id5-xO-QJp"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="et6-x9-iM1">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="6EO-qv-Jp2" firstAttribute="top" secondItem="G5j-Xs-7mE" secondAttribute="top" id="G99-3b-eZF"/>
+                <constraint firstItem="6EO-qv-Jp2" firstAttribute="leading" secondItem="G5j-Xs-7mE" secondAttribute="leading" id="JZS-rX-Eec"/>
                 <constraint firstItem="et6-x9-iM1" firstAttribute="leading" secondItem="G5j-Xs-7mE" secondAttribute="leading" id="Ls1-2Q-DM3"/>
-                <constraint firstItem="et6-x9-iM1" firstAttribute="top" secondItem="G5j-Xs-7mE" secondAttribute="top" id="TBt-Db-e9N"/>
+                <constraint firstItem="et6-x9-iM1" firstAttribute="top" secondItem="6EO-qv-Jp2" secondAttribute="bottom" id="ltd-oa-FXp"/>
                 <constraint firstItem="G5j-Xs-7mE" firstAttribute="trailing" secondItem="et6-x9-iM1" secondAttribute="trailing" id="uph-aY-8Bs"/>
                 <constraint firstItem="G5j-Xs-7mE" firstAttribute="bottom" secondItem="et6-x9-iM1" secondAttribute="bottom" id="xtp-7X-6Gu"/>
+                <constraint firstItem="G5j-Xs-7mE" firstAttribute="trailing" secondItem="6EO-qv-Jp2" secondAttribute="trailing" id="zBc-G4-znv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="G5j-Xs-7mE"/>
             <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>

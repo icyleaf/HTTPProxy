@@ -17,6 +17,8 @@
 		806E1AD02427948F005D7E24 /* HTTPProxyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E1ACF2427948F005D7E24 /* HTTPProxyUITests.swift */; };
 		809F5D132440717C00E27F17 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809F5D122440717C00E27F17 /* ColorScheme.swift */; };
 		80BF81F9243F5B60001D54ED /* HeadersListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BF81F8243F5B60001D54ED /* HeadersListController.swift */; };
+		80D4917A24852890007325AF /* RequestFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4917824852890007325AF /* RequestFilterViewController.swift */; };
+		80D4917D24852920007325AF /* RequestFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80D4917C24852920007325AF /* RequestFilterViewController.storyboard */; };
 		80D7D9D9244473CD00D115C1 /* HTTPProxyUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D7D9D8244473CD00D115C1 /* HTTPProxyUI.swift */; };
 		80EF1E87242798140016D0A2 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF1E5B242798140016D0A2 /* Data.swift */; };
 		80EF1E88242798140016D0A2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EF1E5C242798140016D0A2 /* UIColor.swift */; };
@@ -98,6 +100,8 @@
 		806E1AD12427948F005D7E24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		809F5D122440717C00E27F17 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		80BF81F8243F5B60001D54ED /* HeadersListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadersListController.swift; sourceTree = "<group>"; };
+		80D4917824852890007325AF /* RequestFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFilterViewController.swift; sourceTree = "<group>"; };
+		80D4917C24852920007325AF /* RequestFilterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RequestFilterViewController.storyboard; sourceTree = "<group>"; };
 		80D7D9D8244473CD00D115C1 /* HTTPProxyUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProxyUI.swift; sourceTree = "<group>"; };
 		80EF1E5B242798140016D0A2 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		80EF1E5C242798140016D0A2 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -304,9 +308,11 @@
 		80EF1E75242798140016D0A2 /* RequestsList */ = {
 			isa = PBXGroup;
 			children = (
+				80D4917824852890007325AF /* RequestFilterViewController.swift */,
+				80D4917C24852920007325AF /* RequestFilterViewController.storyboard */,
+				80EF1E7B242798140016D0A2 /* RequestsListPresenter.swift */,
 				80EF1E79242798140016D0A2 /* RequestsListViewController.swift */,
 				80EF1E78242798140016D0A2 /* RequestsListViewController.xib */,
-				80EF1E7B242798140016D0A2 /* RequestsListPresenter.swift */,
 				80EF1E77242798140016D0A2 /* RequestViewModel.swift */,
 			);
 			path = RequestsList;
@@ -454,6 +460,7 @@
 				806E1AB52427948D005D7E24 /* Main.storyboard in Resources */,
 				80EF1E8F242798140016D0A2 /* TextViewerViewController.xib in Resources */,
 				80EF1E9E242798140016D0A2 /* RequestsListCell.xib in Resources */,
+				80D4917D24852920007325AF /* RequestFilterViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +604,7 @@
 				80EF1EA6242798140016D0A2 /* HTTPProxyDelegate.swift in Sources */,
 				809F5D132440717C00E27F17 /* ColorScheme.swift in Sources */,
 				80EF1EA1242798140016D0A2 /* RequestsListViewController.swift in Sources */,
+				80D4917A24852890007325AF /* RequestFilterViewController.swift in Sources */,
 				80EF1E94242798140016D0A2 /* RequestDetailsPresenter.swift in Sources */,
 				80EF1E8B242798140016D0A2 /* String.swift in Sources */,
 				80EF1EA8242798140016D0A2 /* HTTPProxyRequestInterceptorDelegate.swift in Sources */,
