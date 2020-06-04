@@ -1,7 +1,8 @@
 import UIKit
 
 class RequestFilterCell: UICollectionViewCell {
-    
+
+    @IBOutlet weak var roundedView: RoundedView!
     @IBOutlet weak var titleLabel: UILabel!
 }
 
@@ -37,7 +38,9 @@ extension RequestFilterViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestFilterCell", for: indexPath) as! RequestFilterCell
         let filter = filters[indexPath.row]
         cell.titleLabel.text = filter.name
-        cell.backgroundColor = filter.enabled ? HTTPProxyUI.colorScheme.selectedColor : .gray
+        cell.titleLabel.textColor = .white
+        cell.roundedView.backgroundColor = HTTPProxyUI.colorScheme.selectedColor
+        cell.contentView.alpha = filter.enabled ? 1 : 0.6
         return cell
     }
 }

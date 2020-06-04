@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A11857101FC0986E6428235 /* Pods_HTTPProxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BDDF51D4D6273C7A21265A /* Pods_HTTPProxy.framework */; };
+		80093AEB24881A42000AD359 /* HTTPProxyFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80093AEA24881A42000AD359 /* HTTPProxyFilter.swift */; };
+		80093AED24881BCB000AD359 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80093AEC24881BCB000AD359 /* RoundedView.swift */; };
 		806E1AB02427948D005D7E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E1AAF2427948D005D7E24 /* AppDelegate.swift */; };
 		806E1AB22427948D005D7E24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E1AB12427948D005D7E24 /* ViewController.swift */; };
 		806E1AB52427948D005D7E24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 806E1AB32427948D005D7E24 /* Main.storyboard */; };
@@ -85,6 +87,8 @@
 		1ADCA4653BB56FC6647819D7 /* Pods_HTTPProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HTTPProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25BF2623F2C00FBC01321027 /* Pods-HTTPProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPProxy.debug.xcconfig"; path = "Target Support Files/Pods-HTTPProxy/Pods-HTTPProxy.debug.xcconfig"; sourceTree = "<group>"; };
 		798A58489DB5225C5513C8EE /* Pods-HTTPProxyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTTPProxyTests.release.xcconfig"; path = "Target Support Files/Pods-HTTPProxyTests/Pods-HTTPProxyTests.release.xcconfig"; sourceTree = "<group>"; };
+		80093AEA24881A42000AD359 /* HTTPProxyFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProxyFilter.swift; sourceTree = "<group>"; };
+		80093AEC24881BCB000AD359 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		806E1AAC2427948D005D7E24 /* HTTPProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTTPProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806E1AAF2427948D005D7E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		806E1AB12427948D005D7E24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +275,7 @@
 				80EF1E5F242798140016D0A2 /* String.swift */,
 				80EF1E60242798140016D0A2 /* UIFont.swift */,
 				80EF1E61242798140016D0A2 /* UIWindow+ShakeGesture.swift */,
+				80093AEC24881BCB000AD359 /* RoundedView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				80D4917824852890007325AF /* RequestFilterViewController.swift */,
 				80D4917C24852920007325AF /* RequestFilterViewController.storyboard */,
 				80EF1E7B242798140016D0A2 /* RequestsListPresenter.swift */,
+				80093AEA24881A42000AD359 /* HTTPProxyFilter.swift */,
 				80EF1E79242798140016D0A2 /* RequestsListViewController.swift */,
 				80EF1E78242798140016D0A2 /* RequestsListViewController.xib */,
 				80EF1E77242798140016D0A2 /* RequestViewModel.swift */,
@@ -605,8 +611,10 @@
 				809F5D132440717C00E27F17 /* ColorScheme.swift in Sources */,
 				80EF1EA1242798140016D0A2 /* RequestsListViewController.swift in Sources */,
 				80D4917A24852890007325AF /* RequestFilterViewController.swift in Sources */,
+				80093AED24881BCB000AD359 /* RoundedView.swift in Sources */,
 				80EF1E94242798140016D0A2 /* RequestDetailsPresenter.swift in Sources */,
 				80EF1E8B242798140016D0A2 /* String.swift in Sources */,
+				80093AEB24881A42000AD359 /* HTTPProxyFilter.swift in Sources */,
 				80EF1EA8242798140016D0A2 /* HTTPProxyRequestInterceptorDelegate.swift in Sources */,
 				80D7D9D9244473CD00D115C1 /* HTTPProxyUI.swift in Sources */,
 				80EF1E89242798140016D0A2 /* SegmentedControl.swift in Sources */,

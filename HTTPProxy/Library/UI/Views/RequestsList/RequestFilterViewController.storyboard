@@ -19,7 +19,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ooX-w8-hfv">
                                 <rect key="frame" x="10" y="54" width="394" height="798"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ecr-VN-tft">
                                     <size key="itemSize" width="120" height="40"/>
                                     <size key="estimatedItemSize" width="120" height="40"/>
@@ -29,15 +29,25 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RequestFilterCell" id="MJg-Rr-4MK" customClass="RequestFilterCell" customModule="HTTPProxy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WXz-K8-6Z1">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRb-Gi-SWf" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="20"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofh-6A-4Ph">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                                    <rect key="frame" x="10" y="0.0" width="100" height="20"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="BJg-2T-hH0"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="iki-BQ-s4j"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -47,15 +57,20 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="ofh-6A-4Ph" firstAttribute="leading" secondItem="WXz-K8-6Z1" secondAttribute="leading" id="7lx-tI-6th"/>
+                                                <constraint firstAttribute="trailing" secondItem="cRb-Gi-SWf" secondAttribute="trailing" id="1CJ-HR-Ndx"/>
+                                                <constraint firstItem="ofh-6A-4Ph" firstAttribute="leading" secondItem="WXz-K8-6Z1" secondAttribute="leading" constant="10" id="7lx-tI-6th"/>
+                                                <constraint firstItem="cRb-Gi-SWf" firstAttribute="top" secondItem="WXz-K8-6Z1" secondAttribute="top" id="Kud-cU-COq"/>
                                                 <constraint firstAttribute="bottom" secondItem="ofh-6A-4Ph" secondAttribute="bottom" id="YWu-75-WRX"/>
-                                                <constraint firstAttribute="trailing" secondItem="ofh-6A-4Ph" secondAttribute="trailing" id="pmb-6h-9Yj"/>
+                                                <constraint firstAttribute="bottom" secondItem="cRb-Gi-SWf" secondAttribute="bottom" id="eaX-Dy-s0A"/>
+                                                <constraint firstItem="cRb-Gi-SWf" firstAttribute="leading" secondItem="WXz-K8-6Z1" secondAttribute="leading" id="fD8-eQ-BAY"/>
+                                                <constraint firstAttribute="trailing" secondItem="ofh-6A-4Ph" secondAttribute="trailing" constant="10" id="pmb-6h-9Yj"/>
                                                 <constraint firstItem="ofh-6A-4Ph" firstAttribute="top" secondItem="WXz-K8-6Z1" secondAttribute="top" id="r4r-eq-JqX"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.12941176469999999" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                        <size key="customSize" width="120" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="120" height="20"/>
                                         <connections>
+                                            <outlet property="roundedView" destination="cRb-Gi-SWf" id="6ZJ-BZ-8vo"/>
                                             <outlet property="titleLabel" destination="ofh-6A-4Ph" id="F6c-Yr-7TA"/>
                                         </connections>
                                     </collectionViewCell>

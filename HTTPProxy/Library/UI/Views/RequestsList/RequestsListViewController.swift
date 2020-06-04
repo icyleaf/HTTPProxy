@@ -76,6 +76,11 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
                         return false
                     }
                 }
+                if let method = filter.httpMethod {
+                    if method != request.request.httpMethod {
+                        return false
+                    }
+                }
             }
             return true
         }

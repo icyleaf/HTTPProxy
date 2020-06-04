@@ -40,7 +40,12 @@ class RequestsListPresenter: NSObject {
         
         let filter2 = HTTPProxyFilter(name: "Postman")
         filter2.host = "postman-echo.com"
+        filter2.enabled = true
         filters.append(filter2)
+        
+        let filter3 = HTTPProxyFilter(name: "DELETE")
+        filter3.httpMethod = "DELETE"
+        filters.append(filter3)
         viewController.filters = filters
         
         HTTPProxy.shared.internalDelegate = self
