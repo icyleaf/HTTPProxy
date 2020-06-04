@@ -1,14 +1,14 @@
 import Foundation
 
 public class HTTPProxyFilter {
-    var name: String
-    var enabled = false
-    var scheme: String?
-    var httpMethod: String?
-    var host: String?
-    var port: Int?
+    public var name: String
+    public var enabled = false
+    public var scheme: String?
+    public var httpMethod: String?
+    public var host: String?
+    public var port: Int?
     
-    init(name: String) {
+    public init(name: String) {
         self.name = name
     }
 }
