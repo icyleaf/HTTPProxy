@@ -15,7 +15,9 @@ class RequestsListPresenter: NSObject {
 
     init(presentingViewController: UIViewController) {
         self.presentingViewController = presentingViewController
-        self.viewController = RequestsListViewController(nibName: "RequestsListViewController", bundle: HTTPProxyUI.bundle)
+        //self.viewController = RequestsListViewController(nibName: "RequestsListViewController", bundle: HTTPProxyUI.bundle)
+        self.viewController = UIStoryboard(name: "RequestsListViewController", bundle: HTTPProxyUI.bundle).instantiateInitialViewController() as! RequestsListViewController
+
         let navigationController = UINavigationController(rootViewController: self.viewController)
         self.navigationController = navigationController
 

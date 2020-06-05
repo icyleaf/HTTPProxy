@@ -13,12 +13,13 @@ protocol RequestsListViewOutput {
 
 class RequestsListViewController: UIViewController, RequestsListViewInput {
     
-    @IBOutlet private var contentView: UIView!
-    @IBOutlet private var filterView: UIView!
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var filterView: UIView!
+    @IBOutlet private weak var filterViewHeight: NSLayoutConstraint!
     var filters: [HTTPProxyFilter] = []
 
     private lazy var contentVC = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyUI.bundle)
-    private lazy var filterVC = UIStoryboard(name: "RequestFilterViewController", bundle: HTTPProxyUI.bundle).instantiateInitialViewController() as! RequestFilterViewController
+    private var filterVC: RequestFilterViewController!
 
     @IBOutlet private var newRequestNotification: UILabel!
 
@@ -40,17 +41,21 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
         frame.origin = CGPoint.zero
         contentVC.view.frame = frame
         contentVC.didMove(toParent: self)
-        
+
+        guard let filterViewController = children.first as? RequestFilterViewController else {
+          fatalError("Check storyboard for missing LocationTableViewController")
+        }
+        filterVC = filterViewController
         filterVC.delegate = self
-        addChild(filterVC)
-        filterView.addSubview(filterVC.view)
-        var frame2 = filterView.frame
-        frame2.origin = CGPoint.zero
-        filterVC.view.frame = frame2
-        filterVC.didMove(toParent: self)
         filterVC.filters = filters
-        
+                
         requestsListViewOutput?.viewLoaded()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // You might want to check if this is your embed segue here
+        // in case there are other segues triggered from this view controller.
+        segue.destination.view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func loadFilters(filters: [HTTPProxyFilter]) {
@@ -104,6 +109,11 @@ extension RequestsListViewController: RequestDetailsDelegate {
 }
 
 extension RequestsListViewController: RequestFilterViewControllerDelegate {
+    func filterDidUpdateHeight(_ height: CGFloat) {
+        filterViewHeight.constant = height
+        view.layoutIfNeeded()
+    }
+    
     func filterSelected(_ filter: HTTPProxyFilter) {
         filter.enabled = !filter.enabled
         showFilteredRequests()

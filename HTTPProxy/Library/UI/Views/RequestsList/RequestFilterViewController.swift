@@ -7,12 +7,16 @@ class RequestFilterCell: UICollectionViewCell {
 }
 
 protocol RequestFilterViewControllerDelegate: class {
+    func filterDidUpdateHeight(_ height: CGFloat)
     func filterSelected(_ filter: HTTPProxyFilter)
 }
 
 class RequestFilterViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionViewHeight: NSLayoutConstraint!
+    private var height: CGFloat = 0.0
+    
     var filters: [HTTPProxyFilter] = []
     weak var delegate: RequestFilterViewControllerDelegate?
     
@@ -21,6 +25,16 @@ class RequestFilterViewController: UIViewController {
     
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let collectionViewHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
+        if collectionViewHeight != height {
+            height = collectionViewHeight
+            print("new height \(height)")
+            delegate?.filterDidUpdateHeight(height)
+        }
     }
     
     private func filterSelected(_ filter: HTTPProxyFilter) {
