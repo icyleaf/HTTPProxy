@@ -42,20 +42,17 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
         contentVC.view.frame = frame
         contentVC.didMove(toParent: self)
 
-        guard let filterViewController = children.first as? RequestFilterViewController else {
-          fatalError("Check storyboard for missing LocationTableViewController")
-        }
-        filterVC = filterViewController
-        filterVC.delegate = self
-        filterVC.filters = filters
-                
         requestsListViewOutput?.viewLoaded()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // You might want to check if this is your embed segue here
-        // in case there are other segues triggered from this view controller.
-        segue.destination.view.translatesAutoresizingMaskIntoConstraints = false
+        let destination = segue.destination
+        guard let filterViewController = destination as? RequestFilterViewController else {
+           fatalError("Unable to instantiate RequestFilterViewController")
+        }
+        filterVC = filterViewController
+        filterVC.delegate = self
+        filterVC.filters = filters
     }
     
     func loadFilters(filters: [HTTPProxyFilter]) {
