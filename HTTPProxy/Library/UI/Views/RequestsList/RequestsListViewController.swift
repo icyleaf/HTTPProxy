@@ -65,30 +65,10 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
     }
     
     func showFilteredRequests() {
-        let filtered = source.filter { (request) -> Bool in
-            guard let components = URLComponents(url: request.request.url!, resolvingAgainstBaseURL: false) else {
-                return false
-            }
-            for filter in filters {
-                if !filter.enabled {
-                    continue
-                }
-                if let host = filter.host {
-                    if host != components.host {
-                        return false
-                    }
-                }
-                if let method = filter.httpMethod {
-                    if method != request.request.httpMethod {
-                        return false
-                    }
-                }
-            }
-            return true
-        }
-                
+        let filteredRequests = RequestListFilter().filterRequests(source, with: filters)
+
         var requestModels: [RequestViewModel] = []
-        for request in filtered {
+        for request in filteredRequests {
             let viewModel = RequestViewModel(request: request)
             requestModels.append(viewModel)
         }
@@ -114,5 +94,66 @@ extension RequestsListViewController: RequestFilterViewControllerDelegate {
     func filterSelected(_ filter: HTTPProxyFilter) {
         filter.enabled = !filter.enabled
         showFilteredRequests()
+    }
+}
+
+struct RequestListFilter {
+    
+    func filterRequests(_ requests: [HTTPRequest], with filters: [HTTPProxyFilter]) -> [HTTPRequest] {
+        requests.filter { (request) -> Bool in
+            guard let components = URLComponents(url: request.request.url!, resolvingAgainstBaseURL: false) else {
+                return false
+            }
+            for filter in filters {
+                if !filter.enabled {
+                    continue
+                }
+                
+                let requestFilter = filter.requestFilter
+                
+                if let method = requestFilter.httpMethod {
+                    if method != request.request.httpMethod {
+                        return false
+                    }
+                }
+                
+                if let scheme = requestFilter.scheme {
+                    if scheme != components.scheme {
+                        return false
+                    }
+                }
+                
+                if let host = requestFilter.host {
+                    if host != components.host {
+                        return false
+                    }
+                }
+                
+                if let host = requestFilter.port {
+                    if host != components.port {
+                        return false
+                    }
+                }
+                
+                if let queryItems = requestFilter.queryItems {
+                    for (name, value) in queryItems {
+                        guard let items = components.queryItems else {
+                            return false
+                        }
+                        var matched = false
+                        for item in items {
+                            if name == item.name && value ?? item.value == item.value {
+                                matched = true
+                                break
+                            }
+                        }
+                        if !matched {
+                            return false
+                        }
+                    }
+                }
+            }
+            return true
+        }
     }
 }
