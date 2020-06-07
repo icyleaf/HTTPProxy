@@ -26,6 +26,7 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
     private var refreshControl = UIRefreshControl()
 
     private var source: [HTTPRequest] = []
+    private var filteredSource: [HTTPRequest] = []
     var requestsListViewOutput: RequestsListViewOutput?
 
     override func viewDidLoad() {
@@ -65,10 +66,10 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
     }
     
     func showFilteredRequests() {
-        let filteredRequests = RequestListFilter().filterRequests(source, with: filters)
+        filteredSource = RequestListFilter().filterRequests(source, with: filters)
 
         var requestModels: [RequestViewModel] = []
-        for request in filteredRequests {
+        for request in filteredSource {
             let viewModel = RequestViewModel(request: request)
             requestModels.append(viewModel)
         }
@@ -80,7 +81,7 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
 
 extension RequestsListViewController: RequestDetailsDelegate {
     func didSelectItem(at index: Int) {
-        let request = source[index]
+        let request = filteredSource[index]
         requestsListViewOutput?.requestSelected(request: request)
     }
 }
