@@ -1,7 +1,6 @@
 import UIKit
 
 class RequestFilterCell: UICollectionViewCell {
-
     @IBOutlet weak var roundedView: RoundedView!
     @IBOutlet weak var titleLabel: UILabel!
 }
@@ -9,10 +8,12 @@ class RequestFilterCell: UICollectionViewCell {
 protocol RequestFilterViewControllerDelegate: class {
     func filterDidUpdateHeight(_ height: CGFloat)
     func filterSelected(_ filter: HTTPProxyFilter)
+    func editFilter(_ filter: HTTPProxyFilter)
+    func deleteFilter(_ filter: HTTPProxyFilter)
 }
 
 class RequestFilterViewController: UIViewController {
-
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var collectionViewHeight: NSLayoutConstraint!
     private var height: CGFloat = 0.0
@@ -36,9 +37,24 @@ class RequestFilterViewController: UIViewController {
             delegate?.filterDidUpdateHeight(height)
         }
     }
+
+    func loadFilters(_ filters: [HTTPProxyFilter]) {
+        self.filters = filters
+        collectionView.reloadData()
+    }
     
     private func filterSelected(_ filter: HTTPProxyFilter) {
         delegate?.filterSelected(filter)
+        collectionView.reloadData()
+    }
+    
+    private func editFilter(_ filter: HTTPProxyFilter) {
+        delegate?.editFilter(filter)
+        collectionView.reloadData()
+    }
+    
+    private func deleteFilter(_ filter: HTTPProxyFilter) {
+        delegate?.deleteFilter(filter)
         collectionView.reloadData()
     }
 }
@@ -60,9 +76,26 @@ extension RequestFilterViewController: UICollectionViewDataSource {
 }
 
 extension RequestFilterViewController: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let filter = filters[indexPath.row]
         filterSelected(filter)
+    }
+    
+    @available(iOS 13.0, *)
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let filter = filters[indexPath.row]
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let editAction = UIAction(title: "Edit") { _ in
+                self.editFilter(filter)
+            }
+            let deleteAction = UIAction(title: "Delete", attributes: .destructive, handler: { _ in
+                self.deleteFilter(filter)
+            })
+            return UIMenu(title: "Options", image: nil, identifier: nil, children: [editAction, deleteAction])
+        }
+        
+        return configuration
     }
 }

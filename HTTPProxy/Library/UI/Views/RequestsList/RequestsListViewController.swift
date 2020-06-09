@@ -1,32 +1,28 @@
 import UIKit
 
-protocol RequestsListViewInput {
-    
-    func loadRequests(requests: [HTTPRequest])
-}
-
 protocol RequestsListViewOutput {
     
     func viewLoaded()
-    func requestSelected(request: HTTPRequest)
+    func requestSelected(_ request: HTTPRequest)
+    func editFilter(_ filter: HTTPProxyFilter)
+    func deleteFilter(_ filter: HTTPProxyFilter)
 }
 
-class RequestsListViewController: UIViewController, RequestsListViewInput {
+class RequestsListViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var filterView: UIView!
     @IBOutlet private weak var filterViewHeight: NSLayoutConstraint!
-    var filters: [HTTPProxyFilter] = []
 
     private lazy var contentVC = SearchableListViewController(nibName: "SearchableListViewController", bundle: HTTPProxyUI.bundle)
     private var filterVC: RequestFilterViewController!
 
     @IBOutlet private var newRequestNotification: UILabel!
-
     private var refreshControl = UIRefreshControl()
 
     private var source: [HTTPRequest] = []
     private var filteredSource: [HTTPRequest] = []
+    var filters: [HTTPProxyFilter] = []
     var requestsListViewOutput: RequestsListViewOutput?
 
     override func viewDidLoad() {
@@ -53,14 +49,15 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
         }
         filterVC = filterViewController
         filterVC.delegate = self
-        filterVC.filters = filters
     }
     
-    func loadFilters(filters: [HTTPProxyFilter]) {
-        filterVC.filters = filters
+    func loadFilters(_ filters: [HTTPProxyFilter]) {
+        self.filters = filters
+        filterVC.loadFilters(filters)
+        showFilteredRequests()
     }
     
-    func loadRequests(requests: [HTTPRequest]) {
+    func loadRequests(_ requests: [HTTPRequest]) {
         source = requests
         showFilteredRequests()
     }
@@ -82,11 +79,19 @@ class RequestsListViewController: UIViewController, RequestsListViewInput {
 extension RequestsListViewController: RequestDetailsDelegate {
     func didSelectItem(at index: Int) {
         let request = filteredSource[index]
-        requestsListViewOutput?.requestSelected(request: request)
+        requestsListViewOutput?.requestSelected(request)
     }
 }
 
 extension RequestsListViewController: RequestFilterViewControllerDelegate {
+    func editFilter(_ filter: HTTPProxyFilter) {
+        requestsListViewOutput?.editFilter(filter)
+    }
+    
+    func deleteFilter(_ filter: HTTPProxyFilter) {
+        requestsListViewOutput?.deleteFilter(filter)
+    }
+    
     func filterDidUpdateHeight(_ height: CGFloat) {
         filterViewHeight.constant = height
         view.layoutIfNeeded()

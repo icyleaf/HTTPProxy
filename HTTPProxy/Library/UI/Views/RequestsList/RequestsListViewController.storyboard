@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGm-tl-QSd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                <rect key="frame" x="15" y="59" width="384" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="GAP-mp-Gj6"/>
                                 </constraints>
@@ -27,17 +27,17 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U6C-Vg-I0O">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="59" width="414" height="803"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="xGm-tl-QSd" firstAttribute="top" secondItem="dhK-Zh-pt3" secondAttribute="top" id="FZX-rA-GyA"/>
-                            <constraint firstItem="dhK-Zh-pt3" firstAttribute="trailing" secondItem="xGm-tl-QSd" secondAttribute="trailing" id="GWL-Nn-gQI"/>
+                            <constraint firstItem="xGm-tl-QSd" firstAttribute="top" secondItem="dhK-Zh-pt3" secondAttribute="top" constant="15" id="FZX-rA-GyA"/>
+                            <constraint firstItem="dhK-Zh-pt3" firstAttribute="trailing" secondItem="xGm-tl-QSd" secondAttribute="trailing" constant="15" id="GWL-Nn-gQI"/>
                             <constraint firstItem="dhK-Zh-pt3" firstAttribute="bottom" secondItem="U6C-Vg-I0O" secondAttribute="bottom" id="S8w-dv-684"/>
                             <constraint firstItem="U6C-Vg-I0O" firstAttribute="leading" secondItem="dhK-Zh-pt3" secondAttribute="leading" id="Wjb-IQ-N5M"/>
-                            <constraint firstItem="xGm-tl-QSd" firstAttribute="leading" secondItem="dhK-Zh-pt3" secondAttribute="leading" id="bEn-2A-RaC"/>
+                            <constraint firstItem="xGm-tl-QSd" firstAttribute="leading" secondItem="dhK-Zh-pt3" secondAttribute="leading" constant="15" id="bEn-2A-RaC"/>
                             <constraint firstItem="U6C-Vg-I0O" firstAttribute="trailing" secondItem="dhK-Zh-pt3" secondAttribute="trailing" id="nxd-uT-I0I"/>
                             <constraint firstItem="U6C-Vg-I0O" firstAttribute="top" secondItem="xGm-tl-QSd" secondAttribute="bottom" id="zLE-5g-g0n"/>
                         </constraints>
@@ -57,7 +57,7 @@
             <objects>
                 <viewController id="53C-sb-eWB" customClass="RequestFilterViewController" customModule="HTTPProxy" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tbb-rd-IXa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Anl-PZ-280">
