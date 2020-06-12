@@ -80,10 +80,10 @@ class EditFilterViewController: UIViewController {
             return
         }
         var requestFilter = RequestFilter()
-        requestFilter.scheme = schemeTextField.validText()?.uppercased()
+        requestFilter.scheme = schemeTextField.validText()
         if let scheme = requestFilter.scheme {
-            if !(scheme == "HTTP" || scheme == "HTTPS") {
-                showError(message: "Invalid value for field 'scheme'. Supported values are 'HTTP' and 'HTTPS'")
+            if !(scheme == "http" || scheme == "https") {
+                showError(message: "Invalid value for field 'scheme'. Supported values: 'http' or 'https'")
                 return
             }
         }
@@ -111,7 +111,6 @@ class EditFilterViewController: UIViewController {
              }
         }
         
-        headerFieldsTextField.text = "key1=value1&key2=value2"
         if let items = headerFieldsTextField.validText() {
             let pairs = items.split(separator: "&")
             if pairs.count > 0 {
@@ -171,6 +170,14 @@ class EditFilterViewController: UIViewController {
                 return "\(name)=\(value ?? "")"
             }
             queryItemsTextField.text = pairs.joined(separator: "&")
+        }
+        
+        if let headerFields = filter.requestFilter.headerFields {
+            let pairs = headerFields.map { (arg0) -> String in
+                let (name, value) = arg0
+                return "\(name)=\(value ?? "")"
+            }
+            headerFieldsTextField.text = pairs.joined(separator: "&")
         }
     }
     

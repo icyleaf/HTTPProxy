@@ -109,6 +109,7 @@ extension RequestsListPresenter: RequestsListViewOutput {
 extension RequestsListPresenter: EditFilterViewControllerDelegate {
     func editFilterViewController(_ viewController: EditFilterViewController, didEditFilter filter: HTTPProxyFilter) {
         if let originalFilter = viewController.filter {
+            filter.enabled = originalFilter.enabled
             if let index = HTTPProxy.shared.filters.firstIndex(where: { (aFilter) -> Bool in
                 originalFilter === aFilter
             }) {
