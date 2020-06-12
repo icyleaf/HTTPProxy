@@ -104,59 +104,86 @@ extension RequestsListViewController: RequestFilterViewControllerDelegate {
 }
 
 struct RequestListFilter {
+
+    private func shouldIncludeRequest(_ request: HTTPRequest, filter: HTTPProxyFilter) -> Bool {
+        
+        guard let components = URLComponents(url: request.request.url!, resolvingAgainstBaseURL: false) else {
+            return false
+        }
+        let requestFilter = filter.requestFilter
+        
+        if let method = requestFilter.httpMethod {
+            if method != request.request.httpMethod {
+                return false
+            }
+        }
+        
+        if let scheme = requestFilter.scheme {
+            if scheme != components.scheme {
+                return false
+            }
+        }
+        
+        if let host = requestFilter.host {
+            if host != components.host {
+                return false
+            }
+        }
+        
+        if let host = requestFilter.port {
+            if host != components.port {
+                return false
+            }
+        }
+        
+        if let queryItems = requestFilter.queryItems {
+            for (name, value) in queryItems {
+                guard let items = components.queryItems else {
+                    return false
+                }
+                var matched = false
+                for item in items {
+                    if name == item.name && value ?? item.value == item.value {
+                        matched = true
+                        break
+                    }
+                }
+                if !matched {
+                    return false
+                }
+            }
+        }
+        
+        if let queryItems = requestFilter.headerFields {
+            for (name, value) in queryItems {
+                guard let items = request.request.allHTTPHeaderFields else {
+                    return false
+                }
+                var matched = false
+                for item in items {
+                    if name == item.key && value ?? item.value == item.value {
+                        matched = true
+                        break
+                    }
+                }
+                if !matched {
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
     
     func filterRequests(_ requests: [HTTPRequest], with filters: [HTTPProxyFilter]) -> [HTTPRequest] {
         requests.filter { (request) -> Bool in
-            guard let components = URLComponents(url: request.request.url!, resolvingAgainstBaseURL: false) else {
-                return false
-            }
             for filter in filters {
                 if !filter.enabled {
                     continue
                 }
                 
-                let requestFilter = filter.requestFilter
-                
-                if let method = requestFilter.httpMethod {
-                    if method != request.request.httpMethod {
-                        return false
-                    }
-                }
-                
-                if let scheme = requestFilter.scheme {
-                    if scheme != components.scheme {
-                        return false
-                    }
-                }
-                
-                if let host = requestFilter.host {
-                    if host != components.host {
-                        return false
-                    }
-                }
-                
-                if let host = requestFilter.port {
-                    if host != components.port {
-                        return false
-                    }
-                }
-                
-                if let queryItems = requestFilter.queryItems {
-                    for (name, value) in queryItems {
-                        guard let items = components.queryItems else {
-                            return false
-                        }
-                        var matched = false
-                        for item in items {
-                            if name == item.name && value ?? item.value == item.value {
-                                matched = true
-                                break
-                            }
-                        }
-                        if !matched {
-                            return false
-                        }
-                    }
+                if !shouldIncludeRequest(request, filter: filter) {
+                    return false
                 }
             }
             return true

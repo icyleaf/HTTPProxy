@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RZ2-DS-8Fa">
-                                <rect key="frame" x="20" y="64" width="374" height="508"/>
+                                <rect key="frame" x="20" y="64" width="374" height="596"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95l-8b-fpI" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="68"/>
@@ -223,6 +223,40 @@
                                             <constraint firstItem="41G-Rd-4i9" firstAttribute="leading" secondItem="i5s-RK-fit" secondAttribute="leading" id="qac-v3-LDG"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIJ-j3-voy" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="528" width="374" height="68"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="dP5-qu-dIK">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="68"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header Fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oa-3N-haR">
+                                                        <rect key="frame" x="8" y="8" width="105.5" height="26"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="key1=value1&amp;key2=value2" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-CY-aUs">
+                                                        <rect key="frame" x="8" y="34" width="358" height="26"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="AOh-CY-aUs" firstAttribute="width" secondItem="dP5-qu-dIK" secondAttribute="width" priority="750" id="cnq-3H-uur"/>
+                                                </constraints>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="dP5-qu-dIK" secondAttribute="bottom" id="CNY-h0-m61"/>
+                                            <constraint firstItem="dP5-qu-dIK" firstAttribute="leading" secondItem="tIJ-j3-voy" secondAttribute="leading" id="DYS-m7-5n9"/>
+                                            <constraint firstItem="dP5-qu-dIK" firstAttribute="top" secondItem="tIJ-j3-voy" secondAttribute="top" id="FRP-40-3tE"/>
+                                            <constraint firstAttribute="height" constant="68" id="Yac-ss-3ID"/>
+                                            <constraint firstAttribute="trailing" secondItem="dP5-qu-dIK" secondAttribute="trailing" id="ZUD-RE-Exb"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="95l-8b-fpI" firstAttribute="width" secondItem="RZ2-DS-8Fa" secondAttribute="width" id="sUG-tl-wJn"/>
@@ -239,6 +273,7 @@
                         <viewLayoutGuide key="safeArea" id="oBL-wm-N4n"/>
                     </view>
                     <connections>
+                        <outlet property="headerFieldsTextField" destination="AOh-CY-aUs" id="UsP-mu-FvR"/>
                         <outlet property="hostTextField" destination="wrV-o4-qyP" id="N7M-NB-68D"/>
                         <outlet property="httpMethodTextField" destination="H7e-9j-48F" id="4ZF-bq-ANl"/>
                         <outlet property="nameTextField" destination="giI-hm-RHw" id="ngy-dB-hsm"/>
@@ -263,6 +298,9 @@
                         <outletCollection property="backgroundViews" destination="LHg-TB-ntz" collectionClass="NSMutableArray" id="hpd-ci-GrY"/>
                         <outletCollection property="labels" destination="aVE-y1-Z2z" collectionClass="NSMutableArray" id="WbT-rb-ZGu"/>
                         <outletCollection property="textFields" destination="7XD-vT-REL" collectionClass="NSMutableArray" id="SxI-rD-6We"/>
+                        <outletCollection property="backgroundViews" destination="tIJ-j3-voy" collectionClass="NSMutableArray" id="wyI-ck-reM"/>
+                        <outletCollection property="labels" destination="9oa-3N-haR" collectionClass="NSMutableArray" id="8qL-nS-4H5"/>
+                        <outletCollection property="textFields" destination="AOh-CY-aUs" collectionClass="NSMutableArray" id="OfQ-Kz-KOO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vxw-VP-AgU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

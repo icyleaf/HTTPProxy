@@ -6,6 +6,7 @@ public struct RequestFilter {
     public var host: String?
     public var port: Int?
     public var queryItems: [(name: String, value: String?)]?
+    public var headerFields: [(name: String, value: String?)]?
 }
 
 public class HTTPProxyFilter {
