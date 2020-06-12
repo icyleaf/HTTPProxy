@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4E-Nm-mYD">
-                                <rect key="frame" x="15" y="59" width="384" height="818"/>
+                                <rect key="frame" x="15" y="59" width="384" height="788"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RZ2-DS-8Fa">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="596"/>
@@ -94,6 +94,11 @@
                                                     <constraint firstItem="Ilc-uo-hu1" firstAttribute="top" secondItem="LHg-TB-ntz" secondAttribute="top" id="kei-Fz-y3o"/>
                                                     <constraint firstAttribute="bottom" secondItem="Ilc-uo-hu1" secondAttribute="bottom" id="vbx-ZN-HtH"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xai-7A-Mc5" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="176" width="384" height="68"/>
@@ -128,6 +133,11 @@
                                                     <constraint firstAttribute="trailing" secondItem="S8G-5J-HzS" secondAttribute="trailing" id="Qhv-YT-xMn"/>
                                                     <constraint firstAttribute="height" constant="68" id="XwH-Na-rgt"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgG-Xh-Xju" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="264" width="384" height="68"/>
@@ -162,6 +172,11 @@
                                                     <constraint firstAttribute="trailing" secondItem="8II-wn-iMB" secondAttribute="trailing" id="dxs-Cd-mLN"/>
                                                     <constraint firstItem="8II-wn-iMB" firstAttribute="leading" secondItem="pgG-Xh-Xju" secondAttribute="leading" id="kCK-qq-hdW"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6z-wk-x1A" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="352" width="384" height="68"/>
@@ -196,6 +211,11 @@
                                                     <constraint firstItem="awz-i4-lCx" firstAttribute="top" secondItem="o6z-wk-x1A" secondAttribute="top" id="cCk-Ql-75E"/>
                                                     <constraint firstAttribute="bottom" secondItem="awz-i4-lCx" secondAttribute="bottom" id="mGH-bl-ZSR"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5s-RK-fit" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="440" width="384" height="68"/>
@@ -230,6 +250,11 @@
                                                     <constraint firstAttribute="trailing" secondItem="41G-Rd-4i9" secondAttribute="trailing" id="eTb-7h-iqa"/>
                                                     <constraint firstItem="41G-Rd-4i9" firstAttribute="leading" secondItem="i5s-RK-fit" secondAttribute="leading" id="qac-v3-LDG"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIJ-j3-voy" customClass="RoundedView" customModule="HTTPProxy" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="528" width="384" height="68"/>
@@ -264,14 +289,20 @@
                                                     <constraint firstAttribute="height" constant="68" id="Yac-ss-3ID"/>
                                                     <constraint firstAttribute="trailing" secondItem="dP5-qu-dIK" secondAttribute="trailing" id="ZUD-RE-Exb"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="RZ2-DS-8Fa" secondAttribute="bottom" id="CWT-ib-BZn"/>
+                                    <constraint firstItem="RZ2-DS-8Fa" firstAttribute="height" secondItem="V4E-Nm-mYD" secondAttribute="height" priority="250" id="2iX-9g-73F"/>
                                     <constraint firstItem="RZ2-DS-8Fa" firstAttribute="leading" secondItem="V4E-Nm-mYD" secondAttribute="leading" id="Dhh-TZ-39D"/>
                                     <constraint firstAttribute="trailing" secondItem="RZ2-DS-8Fa" secondAttribute="trailing" id="Q4n-0a-OhR"/>
+                                    <constraint firstAttribute="bottom" secondItem="RZ2-DS-8Fa" secondAttribute="bottom" constant="15" id="Qb9-3n-Gxl"/>
                                     <constraint firstItem="RZ2-DS-8Fa" firstAttribute="top" secondItem="V4E-Nm-mYD" secondAttribute="top" id="VQU-eZ-0dB"/>
                                     <constraint firstItem="RZ2-DS-8Fa" firstAttribute="width" secondItem="V4E-Nm-mYD" secondAttribute="width" id="hsx-Oo-dSs"/>
                                 </constraints>
@@ -282,7 +313,7 @@
                             <constraint firstItem="V4E-Nm-mYD" firstAttribute="leading" secondItem="oBL-wm-N4n" secondAttribute="leading" constant="15" id="1Ex-uQ-2Mx"/>
                             <constraint firstItem="V4E-Nm-mYD" firstAttribute="top" secondItem="oBL-wm-N4n" secondAttribute="top" constant="15" id="Fl4-La-mYM"/>
                             <constraint firstItem="oBL-wm-N4n" firstAttribute="trailing" secondItem="V4E-Nm-mYD" secondAttribute="trailing" constant="15" id="ffy-ig-cm4"/>
-                            <constraint firstItem="V4E-Nm-mYD" firstAttribute="bottom" secondItem="oBL-wm-N4n" secondAttribute="bottom" constant="15" id="uT0-aC-d9R"/>
+                            <constraint firstItem="V4E-Nm-mYD" firstAttribute="bottom" secondItem="oBL-wm-N4n" secondAttribute="bottom" constant="-15" id="uT0-aC-d9R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oBL-wm-N4n"/>
                     </view>
@@ -294,6 +325,7 @@
                         <outlet property="portTextField" destination="Jzr-VE-ny1" id="yHf-PG-p4g"/>
                         <outlet property="queryItemsTextField" destination="8KP-hO-waq" id="dhG-ly-5KD"/>
                         <outlet property="schemeTextField" destination="7XD-vT-REL" id="to2-vK-Acd"/>
+                        <outlet property="tableViewBottomLayoutConstraint" destination="uT0-aC-d9R" id="6Yk-jf-uwI"/>
                         <outletCollection property="backgroundViews" destination="pgG-Xh-Xju" collectionClass="NSMutableArray" id="pU1-bD-b2g"/>
                         <outletCollection property="backgroundViews" destination="LHg-TB-ntz" collectionClass="NSMutableArray" id="hpd-ci-GrY"/>
                         <outletCollection property="labels" destination="5nK-GQ-VGU" collectionClass="NSMutableArray" id="g0U-fC-h24"/>

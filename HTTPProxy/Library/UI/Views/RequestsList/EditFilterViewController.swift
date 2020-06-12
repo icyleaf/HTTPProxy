@@ -21,23 +21,72 @@ class EditFilterViewController: UIViewController {
     @IBOutlet private var queryItemsTextField: UITextField!
     @IBOutlet private var headerFieldsTextField: UITextField!
 
+    @IBOutlet weak var tableViewBottomLayoutConstraint: NSLayoutConstraint!
+    private var tableViewBottonInset: CGFloat = 0
+
     override func viewDidLoad() {
-        setupView()
-        
+        super.viewDidLoad()
+
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
         navigationItem.rightBarButtonItem = saveButton
-        
+
+        setupView()
+        tableViewBottonInset = tableViewBottomLayoutConstraint.constant
+
         if let filter = filter {
             loadView(filter: filter)
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc
+    private func keyboardWillAppear(notification: NSNotification?) {
+
+        guard let keyboardFrame = notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        
+        let bottomInset: CGFloat
+        if #available(iOS 11.0, *) {
+            bottomInset = keyboardFrame.cgRectValue.height - UIApplication.shared.keyWindow!.safeAreaInsets.bottom
+        } else {
+            bottomInset = keyboardFrame.cgRectValue.height
+        }
+
+        tableViewBottomLayoutConstraint.constant = -bottomInset
+    }
+
+    @objc
+    private func keyboardWillDisappear(notification: NSNotification?) {
+        tableViewBottomLayoutConstraint.constant = tableViewBottonInset
+    }
+    
     @objc func save() {
         guard let name = nameTextField.validText() else {
+            showError(message: "Field 'name' cannot be empty")
             return
         }
         var requestFilter = RequestFilter()
-        requestFilter.scheme = schemeTextField.validText()
+        requestFilter.scheme = schemeTextField.validText()?.uppercased()
+        if let scheme = requestFilter.scheme {
+            if !(scheme == "HTTP" || scheme == "HTTPS") {
+                showError(message: "Invalid value for field 'scheme'. Supported values are 'HTTP' and 'HTTPS'")
+                return
+            }
+        }
         requestFilter.httpMethod = httpMethodTextField.validText()
         requestFilter.host = hostTextField.validText()
         var port: Int?
@@ -99,6 +148,7 @@ class EditFilterViewController: UIViewController {
             textField.autocorrectionType = .no
             textField.font = UIFont.menloBold14
             textField.textColor = HTTPProxyUI.colorScheme.primaryTextColor
+            textField.delegate = self
         }
     }
     
@@ -122,6 +172,21 @@ class EditFilterViewController: UIViewController {
             }
             queryItemsTextField.text = pairs.joined(separator: "&")
         }
+    }
+    
+    private func showError(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .actionSheet)
+        present(alert, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            alert.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+extension EditFilterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
