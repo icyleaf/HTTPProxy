@@ -19,7 +19,8 @@ class EditFilterViewController: UIViewController {
     @IBOutlet private var hostTextField: UITextField!
     @IBOutlet private var portTextField: UITextField!
     @IBOutlet private var queryItemsTextField: UITextField!
-    
+    @IBOutlet private var headerFieldsTextField: UITextField!
+
     override func viewDidLoad() {
         setupView()
         
@@ -44,7 +45,25 @@ class EditFilterViewController: UIViewController {
             port = Int(portText)
         }
         requestFilter.port = port
+        
         if let items = queryItemsTextField.validText() {
+             let pairs = items.split(separator: "&")
+             if pairs.count > 0 {
+                 var queryItems: [(name: String, value: String?)] = []
+                 for substring in pairs {
+                     let queryItem = substring.split(separator: "=")
+                     guard let name = queryItem.first else {
+                         return
+                     }
+                     let value = queryItem[1]
+                     queryItems.append((name: String(name), value: String(value)))
+                 }
+                 requestFilter.queryItems = queryItems
+             }
+        }
+        
+        headerFieldsTextField.text = "key1=value1&key2=value2"
+        if let items = headerFieldsTextField.validText() {
             let pairs = items.split(separator: "&")
             if pairs.count > 0 {
                 var queryItems: [(name: String, value: String?)] = []
@@ -56,10 +75,10 @@ class EditFilterViewController: UIViewController {
                     let value = queryItem[1]
                     queryItems.append((name: String(name), value: String(value)))
                 }
-                requestFilter.queryItems = queryItems
+                requestFilter.headerFields = queryItems
             }
         }
-
+        
         let filter = HTTPProxyFilter(name: name, requestFilter: requestFilter)
         delegate?.editFilterViewController(self, didEditFilter: filter)
     }
