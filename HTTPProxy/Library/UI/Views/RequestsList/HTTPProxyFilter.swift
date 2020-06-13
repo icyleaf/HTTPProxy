@@ -23,6 +23,16 @@ public struct RequestFilter {
     public var port: Int?
     public var queryItems: [KeyValuePair]?
     public var headerFields: [KeyValuePair]?
+    
+    init(httpMethod: String? = nil, scheme: String? = nil, host: String? = nil, port: Int? = nil,
+         queryItems: [KeyValuePair]? = nil, headerFields: [KeyValuePair]? = nil) {
+        self.httpMethod = httpMethod
+        self.scheme = scheme
+        self.host = host
+        self.port = port
+        self.queryItems = queryItems
+        self.headerFields = headerFields
+    }
 }
 
 public class HTTPProxyFilter {
