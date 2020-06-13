@@ -45,7 +45,7 @@ class RequestsListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination
         guard let filterViewController = destination as? RequestFilterViewController else {
-           fatalError("Unable to instantiate RequestFilterViewController")
+            fatalError("Unable to instantiate RequestFilterViewController")
         }
         filterVC = filterViewController
         filterVC.delegate = self
@@ -137,13 +137,13 @@ struct RequestListFilter {
         }
         
         if let queryItems = requestFilter.queryItems {
-            for (name, value) in queryItems {
+            for pair in queryItems {
                 guard let items = components.queryItems else {
                     return false
                 }
                 var matched = false
                 for item in items {
-                    if name == item.name && value ?? item.value == item.value {
+                    if pair.key == item.name && pair.value ?? item.value == item.value {
                         matched = true
                         break
                     }
@@ -155,13 +155,13 @@ struct RequestListFilter {
         }
         
         if let queryItems = requestFilter.headerFields {
-            for (name, value) in queryItems {
+            for pair in queryItems {
                 guard let items = request.request.allHTTPHeaderFields else {
                     return false
                 }
                 var matched = false
                 for item in items {
-                    if name == item.key && value ?? item.value == item.value {
+                    if pair.key == item.key && pair.value ?? item.value == item.value {
                         matched = true
                         break
                     }

@@ -95,33 +95,22 @@ class EditFilterViewController: UIViewController {
         }
         requestFilter.port = port
         
-        if let items = queryItemsTextField.validText() {
-             let pairs = items.split(separator: "&")
-             if pairs.count > 0 {
-                 var queryItems: [(name: String, value: String?)] = []
-                 for substring in pairs {
-                     let queryItem = substring.split(separator: "=")
-                     guard let name = queryItem.first else {
-                         return
-                     }
-                     let value = queryItem[1]
-                     queryItems.append((name: String(name), value: String(value)))
-                 }
-                 requestFilter.queryItems = queryItems
-             }
+        if let queryItems = queryItemsTextField.validText() {
+            let pairs = queryItems.keyValuePairs()
+            requestFilter.queryItems = pairs
         }
         
         if let items = headerFieldsTextField.validText() {
             let pairs = items.split(separator: "&")
             if pairs.count > 0 {
-                var queryItems: [(name: String, value: String?)] = []
+                var queryItems: [KeyValuePair] = []
                 for substring in pairs {
                     let queryItem = substring.split(separator: "=")
                     guard let name = queryItem.first else {
                         return
                     }
                     let value = queryItem[1]
-                    queryItems.append((name: String(name), value: String(value)))
+                    queryItems.append(KeyValuePair(String(name), String(value)))
                 }
                 requestFilter.headerFields = queryItems
             }
@@ -165,17 +154,15 @@ class EditFilterViewController: UIViewController {
         }
         
         if let queryItems = filter.requestFilter.queryItems {
-            let pairs = queryItems.map { (arg0) -> String in
-                let (name, value) = arg0
-                return "\(name)=\(value ?? "")"
+            let pairs = queryItems.map { (pair) -> String in
+                return "\(pair.key)=\(pair.value ?? "")"
             }
             queryItemsTextField.text = pairs.joined(separator: "&")
         }
         
         if let headerFields = filter.requestFilter.headerFields {
-            let pairs = headerFields.map { (arg0) -> String in
-                let (name, value) = arg0
-                return "\(name)=\(value ?? "")"
+            let pairs = headerFields.map { (pair) -> String in
+                return "\(pair.key)=\(pair.value ?? "")"
             }
             headerFieldsTextField.text = pairs.joined(separator: "&")
         }
@@ -204,5 +191,41 @@ extension UITextField {
             return timmedString.count > 0 ? timmedString : nil
         }
         return nil
+    }
+}
+
+extension String {
+    
+    func keyValuePairs() -> [KeyValuePair]? {
+        if self.starts(with: "&") {
+              return nil
+        }
+        let pairs = self.split(separator: "&")
+        if pairs.count > 0 {
+            var queryItems: [KeyValuePair] = []
+            for substring in pairs {
+                guard let pair = String(substring).keyValuePair() else {
+                    return nil
+                }
+                queryItems.append(pair)
+            }
+            return queryItems
+        }
+        return nil
+    }
+    
+    private func keyValuePair() -> KeyValuePair? {
+        if self.starts(with: "=") || (self.firstIndex(of: "=") != self.lastIndex(of: "=")) {
+            return nil
+        }
+        let pairComponents = self.split(separator: "=")
+        guard let name = pairComponents.first else {
+            return nil
+        }
+        var value: String?
+        if pairComponents.count == 2, let str = pairComponents.last {
+            value = String(str)
+        }
+        return KeyValuePair(String(name), value)
     }
 }

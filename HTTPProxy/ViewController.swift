@@ -26,13 +26,24 @@ class ViewController: UIViewController {
         requestFilter = RequestFilter()
         requestFilter.host = "postman-echo.com"
         let filter2 = HTTPProxyFilter(name: "Postman", requestFilter: requestFilter)
-        filter2.enabled = true
         filters.append(filter2)
         
         requestFilter = RequestFilter()
         requestFilter.httpMethod = "DELETE"
         let filter3 = HTTPProxyFilter(name: "DELETE", requestFilter: requestFilter)
         filters.append(filter3)
+        
+        requestFilter = RequestFilter()
+        requestFilter.queryItems = [KeyValuePair("foo2", "bar2")]
+        let filter4 = HTTPProxyFilter(name: "query", requestFilter: requestFilter)
+        //filter4.enabled = true
+        filters.append(filter4)
+
+        requestFilter = RequestFilter()
+        requestFilter.scheme = "http"
+        let filter5 = HTTPProxyFilter(name: "http", requestFilter: requestFilter)
+        filters.append(filter5)
+        
         HTTPProxy.shared.filters = filters
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

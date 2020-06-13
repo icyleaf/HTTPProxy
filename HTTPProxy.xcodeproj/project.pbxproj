@@ -11,6 +11,7 @@
 		80093AEB24881A42000AD359 /* HTTPProxyFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80093AEA24881A42000AD359 /* HTTPProxyFilter.swift */; };
 		80093AED24881BCB000AD359 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80093AEC24881BCB000AD359 /* RoundedView.swift */; };
 		80093AF124892FA8000AD359 /* RequestsListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80093AF024892FA8000AD359 /* RequestsListViewController.storyboard */; };
+		801453052493AC4A003DE46E /* StringSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801453042493AC4A003DE46E /* StringSpec.swift */; };
 		806E1AB02427948D005D7E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E1AAF2427948D005D7E24 /* AppDelegate.swift */; };
 		806E1AB22427948D005D7E24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E1AB12427948D005D7E24 /* ViewController.swift */; };
 		806E1AB52427948D005D7E24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 806E1AB32427948D005D7E24 /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		80093AEA24881A42000AD359 /* HTTPProxyFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPProxyFilter.swift; sourceTree = "<group>"; };
 		80093AEC24881BCB000AD359 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		80093AF024892FA8000AD359 /* RequestsListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RequestsListViewController.storyboard; sourceTree = "<group>"; };
+		801453042493AC4A003DE46E /* StringSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSpec.swift; sourceTree = "<group>"; };
 		806E1AAC2427948D005D7E24 /* HTTPProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTTPProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		806E1AAF2427948D005D7E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		806E1AB12427948D005D7E24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -222,8 +224,9 @@
 			isa = PBXGroup;
 			children = (
 				806E1AC42427948F005D7E24 /* HTTPProxyTests.swift */,
-				80CF4B13248A9E4A00756F51 /* RequestListFilterSpec.swift */,
 				806E1AC62427948F005D7E24 /* Info.plist */,
+				80CF4B13248A9E4A00756F51 /* RequestListFilterSpec.swift */,
+				801453042493AC4A003DE46E /* StringSpec.swift */,
 			);
 			path = HTTPProxyTests;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				806E1AC52427948F005D7E24 /* HTTPProxyTests.swift in Sources */,
+				801453052493AC4A003DE46E /* StringSpec.swift in Sources */,
 				80CF4B14248A9E4A00756F51 /* RequestListFilterSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

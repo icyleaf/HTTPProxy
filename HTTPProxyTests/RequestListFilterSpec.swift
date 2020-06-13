@@ -94,7 +94,7 @@ class RequestListFilterSpec: QuickSpec {
             context("query filter") {
                 
                 context("query filter with key and value") {
-                    let requestFilter = RequestFilter(queryItems: [("foo", "bar")])
+                    let requestFilter = RequestFilter(queryItems: [KeyValuePair("foo", "bar")])
                     let filter = HTTPProxyFilter(name: "query", requestFilter: requestFilter)
                     filter.enabled = true
                     
@@ -128,7 +128,7 @@ class RequestListFilterSpec: QuickSpec {
                 }
                 
                 context("query filter with key only") {
-                    let requestFilter = RequestFilter(queryItems: [("foo", nil)])
+                    let requestFilter = RequestFilter(queryItems: [KeyValuePair("foo", nil)])
                     let filter = HTTPProxyFilter(name: "query", requestFilter: requestFilter)
                     filter.enabled = true
                     
