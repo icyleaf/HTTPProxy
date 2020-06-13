@@ -23,7 +23,11 @@ class RequestFilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        let layout = UICollectionViewCenterLayout()
+        layout.estimatedItemSize = CGSize(width: 100, height: 30)
+        collectionView.collectionViewLayout = layout
+        
         collectionView.dataSource = self
         collectionView.delegate = self
     }
