@@ -176,17 +176,22 @@ struct RequestListFilter {
     }
     
     func filterRequests(_ requests: [HTTPRequest], with filters: [HTTPProxyFilter]) -> [HTTPRequest] {
-        requests.filter { (request) -> Bool in
+        if filters.firstIndex(where: { filter -> Bool in
+            filter.enabled
+        }) == nil {
+            return requests
+        }
+        let filteredRequests = requests.filter { (request) -> Bool in
             for filter in filters {
                 if !filter.enabled {
                     continue
                 }
-                
-                if !shouldIncludeRequest(request, filter: filter) {
-                    return false
+                if shouldIncludeRequest(request, filter: filter) {
+                    return true
                 }
             }
-            return true
+            return false
         }
+        return filteredRequests
     }
 }
