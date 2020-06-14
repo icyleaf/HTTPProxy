@@ -277,13 +277,14 @@
 		80EF1E5A242798140016D0A2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				80093AEE24887DB9000AD359 /* CollectionViewCenterLayout.swift */,
 				80EF1E5B242798140016D0A2 /* Data.swift */,
-				80EF1E5C242798140016D0A2 /* UIColor.swift */,
+				80093AEC24881BCB000AD359 /* RoundedView.swift */,
 				80EF1E5D242798140016D0A2 /* SegmentedControl.swift */,
 				80EF1E5F242798140016D0A2 /* String.swift */,
+				80EF1E5C242798140016D0A2 /* UIColor.swift */,
 				80EF1E60242798140016D0A2 /* UIFont.swift */,
 				80EF1E61242798140016D0A2 /* UIWindow+ShakeGesture.swift */,
-				80093AEC24881BCB000AD359 /* RoundedView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -321,7 +322,6 @@
 		80EF1E75242798140016D0A2 /* RequestsList */ = {
 			isa = PBXGroup;
 			children = (
-				80093AEE24887DB9000AD359 /* CollectionViewCenterLayout.swift */,
 				80C632F9248D09CF00B36353 /* EditFilterViewController.storyboard */,
 				80C632F5248BB0DA00B36353 /* EditFilterViewController.swift */,
 				80D4917824852890007325AF /* RequestFilterViewController.swift */,
