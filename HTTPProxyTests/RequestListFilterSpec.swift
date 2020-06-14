@@ -157,6 +157,41 @@ class RequestListFilterSpec: QuickSpec {
                     }
                 }
             }
+            
+            context("multiple filters") {
+                let httpRequestFilter = RequestFilter(scheme: "http")
+                let httpFilter = HTTPProxyFilter(name: "http", requestFilter: httpRequestFilter)
+                httpFilter.enabled = true
+                
+                let portRequestFilter = RequestFilter(port: 5000)
+                let portFilter = HTTPProxyFilter(name: "http", requestFilter: portRequestFilter)
+                portFilter.enabled = true
+                let filters = [httpFilter, portFilter]
+                
+                it("returns all requests matched by any of the filters") {
+                    let request1 = HTTPRequest(url: "https://jsonplaceholder.typicode.com/posts/0")!
+                    let request2 = HTTPRequest(url: "http://www.google.com")!
+                    let request3 = HTTPRequest(url: "https://localhost:5000")!
+                    
+                    let requests = [request1, request2, request3]
+                    let result = sut.filterRequests(requests, with: filters)
+                    
+                    expect(result).to(equal([request2, request3]))
+                }
+            }
+            
+            context("no filters") {
+                it("returns all requests") {
+                    let request1 = HTTPRequest(url: "https://jsonplaceholder.typicode.com/posts/0")!
+                    let request2 = HTTPRequest(url: "http://www.google.com")!
+                    let request3 = HTTPRequest(url: "https://localhost:5000")!
+                    
+                    let requests = [request1, request2, request3]
+                    let result = sut.filterRequests(requests, with: [])
+                    
+                    expect(result).to(equal(requests))
+                }
+            }
         }
     }
 }
