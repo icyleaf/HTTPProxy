@@ -34,3 +34,15 @@ public class HTTPRequest {
         self.requestDate = Date()
     }
 }
+
+extension HTTPRequest: Equatable {
+    public static func == (lhs: HTTPRequest, rhs: HTTPRequest) -> Bool {
+        return lhs.request == rhs.request && lhs.requestDate == rhs.requestDate
+    }
+}
+
+extension HTTPRequest: CustomStringConvertible {
+    public var description: String {
+        return "<\(type(of: self)): requestDate: \(requestDate) URL: \(request.url!)>"
+    }
+}

@@ -3,7 +3,6 @@ use_frameworks!
 
 target 'HTTPProxy' do
   pod 'Highlightr'
-  pod 'SwiftLint'
 end
 
 target 'HTTPProxyTests' do

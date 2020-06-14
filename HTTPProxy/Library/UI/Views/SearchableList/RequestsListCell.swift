@@ -16,14 +16,7 @@ class RequestsListCell: UITableViewCell {
         selectionStyle = .none
         
         containerView.backgroundColor = HTTPProxyUI.colorScheme.foregroundColor
-        containerView.layer.shadowOpacity = 0.18
-        containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        containerView.layer.shadowRadius = 2
-        containerView.layer.shadowColor = UIColor.clear.cgColor
         containerView.layer.cornerRadius = 8
-        containerView.layer.borderColor = UIColor.clear.cgColor
-        containerView.layer.borderWidth = 1
-        containerView.layer.masksToBounds = false
         
         let boldFont = UIFont(name: "Menlo-Bold", size: 14.0)!
         titleLabel.font = boldFont
@@ -54,12 +47,13 @@ class RequestsListCell: UITableViewCell {
         if let requestStatus = viewModel.requestStatus {
             switch requestStatus {
             case .completed(let statusCode):
-                statusLabel.backgroundColor = (statusCode >= 200 && statusCode < 300) ? #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1) : .red
+                let color = (statusCode >= 200 && statusCode < 300) ? HTTPProxyUI.colorScheme.semanticColorPositive : HTTPProxyUI.colorScheme.semanticColorNegative
+                statusLabel.backgroundColor = color
                 statusLabel.text = "\(statusCode)"
                 statusLabel.isHidden = false
                 activityView.isHidden = true
             case .error:
-                statusLabel.backgroundColor = .red
+                statusLabel.backgroundColor = HTTPProxyUI.colorScheme.semanticColorNegative
                 statusLabel.text = "Error"
                 statusLabel.isHidden = false
                 activityView.isHidden = true
