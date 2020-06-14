@@ -45,11 +45,11 @@ struct DarkColorScheme: ColorScheme {
     }
     
     var semanticColorPositive: UIColor {
-        UIColor(rgbColorCodeRed: 44, green: 209, blue: 66)
+        UIColor(rgbColorCodeRed: 87, green: 159, blue: 43)
     }
     
     var semanticColorNegative: UIColor {
-        UIColor(rgbColorCodeRed: 255, green: 60, blue: 51)
+        UIColor(rgbColorCodeRed: 255, green: 0, blue: 0)
     }
 }
 
@@ -79,10 +79,10 @@ struct LightColorScheme: ColorScheme {
     }
     
     var semanticColorPositive: UIColor {
-        UIColor(rgbColorCodeRed: 148, green: 148, blue: 148)
+        UIColor(rgbColorCodeRed: 87, green: 159, blue: 43)
     }
     
     var semanticColorNegative: UIColor {
-        UIColor(rgbColorCodeRed: 230, green: 134, blue: 11)
+        UIColor(rgbColorCodeRed: 255, green: 0, blue: 0)
     }
 }
