@@ -100,20 +100,9 @@ class EditFilterViewController: UIViewController {
             requestFilter.queryItems = pairs
         }
         
-        if let items = headerFieldsTextField.validText() {
-            let pairs = items.split(separator: "&")
-            if pairs.count > 0 {
-                var queryItems: [KeyValuePair] = []
-                for substring in pairs {
-                    let queryItem = substring.split(separator: "=")
-                    guard let name = queryItem.first else {
-                        return
-                    }
-                    let value = queryItem[1]
-                    queryItems.append(KeyValuePair(String(name), String(value)))
-                }
-                requestFilter.headerFields = queryItems
-            }
+        if let headerFields = headerFieldsTextField.validText() {
+            let pairs = headerFields.keyValuePairs()
+            requestFilter.headerFields = pairs
         }
         
         let filter = HTTPProxyFilter(name: name, requestFilter: requestFilter)
@@ -153,19 +142,8 @@ class EditFilterViewController: UIViewController {
             portTextField.text = "\(port)"
         }
         
-        if let queryItems = filter.requestFilter.queryItems {
-            let pairs = queryItems.map { (pair) -> String in
-                return "\(pair.key)=\(pair.value ?? "")"
-            }
-            queryItemsTextField.text = pairs.joined(separator: "&")
-        }
-        
-        if let headerFields = filter.requestFilter.headerFields {
-            let pairs = headerFields.map { (pair) -> String in
-                return "\(pair.key)=\(pair.value ?? "")"
-            }
-            headerFieldsTextField.text = pairs.joined(separator: "&")
-        }
+        queryItemsTextField.text = filter.requestFilter.queryItems?.toString()
+        headerFieldsTextField.text = filter.requestFilter.headerFields?.toString()
     }
     
     private func showError(message: String) {
@@ -174,6 +152,15 @@ class EditFilterViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             alert.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension Array where Element == KeyValuePair {
+    func toString() -> String? {
+        let components = self.map { (pair) -> String in
+            return "\(pair.key)=\(pair.value ?? "")"
+        }
+        return components.joined(separator: "&")
     }
 }
 
