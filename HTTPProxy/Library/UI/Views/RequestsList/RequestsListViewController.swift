@@ -112,28 +112,20 @@ struct RequestListFilter {
         }
         let requestFilter = filter.requestFilter
         
-        if let method = requestFilter.httpMethod {
-            if method != request.request.httpMethod {
-                return false
-            }
+        if let method = requestFilter.httpMethod, method != request.request.httpMethod {
+            return false
         }
         
-        if let scheme = requestFilter.scheme {
-            if scheme != components.scheme {
-                return false
-            }
+        if let scheme = requestFilter.scheme, scheme != components.scheme {
+            return false
         }
         
-        if let host = requestFilter.host {
-            if host != components.host {
-                return false
-            }
+        if let host = requestFilter.host, host != components.host {
+           return false
         }
         
-        if let host = requestFilter.port {
-            if host != components.port {
-                return false
-            }
+        if let host = requestFilter.port, host != components.port {
+            return false
         }
         
         if let queryItems = requestFilter.queryItems {

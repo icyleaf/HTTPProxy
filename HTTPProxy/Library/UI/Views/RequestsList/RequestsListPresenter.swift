@@ -15,7 +15,6 @@ class RequestsListPresenter: NSObject {
 
     init(presentingViewController: UIViewController) {
         self.presentingViewController = presentingViewController
-        //self.viewController = RequestsListViewController(nibName: "RequestsListViewController", bundle: HTTPProxyUI.bundle)
         self.requestsViewController = UIStoryboard(name: "RequestsListViewController", bundle: HTTPProxyUI.bundle).instantiateInitialViewController() as! RequestsListViewController
 
         let navigationController = UINavigationController(rootViewController: self.requestsViewController)
@@ -33,7 +32,7 @@ class RequestsListPresenter: NSObject {
 
         navigationController.modalPresentationStyle = .fullScreen
         requestsViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
-        let composeButton =  UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(filter))
+        let composeButton =  UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(filter))
         let clearButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clear))
         requestsViewController.navigationItem.rightBarButtonItems = [clearButton, composeButton]
         

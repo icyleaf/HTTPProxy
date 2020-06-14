@@ -37,7 +37,6 @@ class RequestFilterViewController: UIViewController {
         let collectionViewHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
         if collectionViewHeight != height {
             height = collectionViewHeight
-            print("new height \(height)")
             delegate?.filterDidUpdateHeight(height)
         }
     }
