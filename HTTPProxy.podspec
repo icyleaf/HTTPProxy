@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.summary       = 'Network debugging library'
   spec.source        = { :git => 'https://github.com/rafaelleao/HTTPProxy.git', :tag => spec.version }
   spec.swift_version = '5.0'
-  spec.platform      = :ios, '10.0'
+  spec.platform      = :ios, '9.0'
   spec.source_files  = 'HTTPProxy/Library/**/*.swift'
   spec.resources     = ['HTTPProxy/Library/**/*.{xib}']
   spec.dependency 'Highlightr'
